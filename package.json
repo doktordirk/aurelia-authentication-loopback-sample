@@ -1,6 +1,6 @@
 {
-  "name": "aurelia-loopback",
-  "version": "1.0.0",
+  "name": "aurelia-auth-loopback",
+  "version": "1.1.0",
   "main": "server/server.js",
   "scripts": {
     "pretest": "jshint ."
@@ -9,20 +9,20 @@
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "errorhandler": "^1.1.1",
-    "loopback": "^2.14.0",
+    "loopback": "^2.26.2",
     "loopback-boot": "^2.6.5",
-    "loopback-datasource-juggler": "^2.19.0",
+    "loopback-datasource-juggler": "^2.44.0",
     "serve-favicon": "^2.0.1"
   },
   "optionalDependencies": {
-    "loopback-explorer": "^1.1.0"
+        "loopback-component-explorer": "^2.1.1"
   },
   "devDependencies": {
-    "jshint": "^2.5.6"
+    "jshint": "^2.9.1-rc2"
   },
   "repository": {
-    "type": "",
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/doktordirk/aurelia-auth-loopback-sample"
   },
-  "description": "aurelia-loopback"
+  "description": "Sample aurelia-auth loopback application"
 }
