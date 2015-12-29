@@ -1,6 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  source: './**/*.js',
+  lint: './**/*.js',
+  changelog: ['./**/*.js','./**/*.json'],
   doc:'./doc'
 };
