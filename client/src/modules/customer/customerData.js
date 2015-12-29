@@ -1,60 +1,37 @@
-import {inject} from "aurelia-framework";
-import {HttpClient} from "aurelia-http-client";
+import {inject} from 'aurelia-framework';
+import {Rest} from 'SpoonX/aurelia-api';
 
-let baseUrl = "/api/customers";
-
-@inject(HttpClient)
+@inject(Rest)
 export class CustomerData {
 
-  constructor(httpClient) {
-    this.http = httpClient;
+  model = 'customers';
+
+  constructor(rest) {
+    this.rest = rest;
+  }
+
+  get modelPath() {
+    return `${this.model}`;
   }
 
   getById(id) {
-    return this.http.get(`${baseUrl}/${id}`)
-      .then(response => {
-        return response.content;
-      });
+    return this.rest.find(this.modelPath, id); 
   }
-
-  getPage(pageNumber) {
-    return this.http.createRequest(baseUrl)
-      .asGet()
-      .withParams({'page': pageNumber})
-      .send()
-      .then(response => {
-        return response.content;
-      });
-  }
-
+  
   getAll() {
-    return this.http.get(baseUrl)
-      .then(response => {
-        return response.content;
-      });
+    return this.rest.find(this.modelPath);  
   }
 
   save(customer) {
-    var request = this.http.createRequest();
+    let request;
+
     if (customer.id) {
-      request.asPut()
-        .withUrl(`${baseUrl}/${customer.id}`)
-        //TODO check if withHeader still necessary
-        .withHeader("Accept", "application/json")
-        .withHeader("Content-Type", "application/json")
-        .withContent(customer);
+      request = this.rest.update(this.modelPath, customer.id, customer);
     }
     else {
-      request.asPost()
-        .withUrl(baseUrl)
-        //TODO check if withHeader still necessary
-        .withHeader("Accept", "application/json")
-        .withHeader("Content-Type", "application/json")
-        .withContent(customer);
+      request = this.rest.create(this.modelPath, customer);
     }
-    ;
 
-    return request.send().then(response => response.content);
+    return request;
   }
-
 }

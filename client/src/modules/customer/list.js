@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
-import {CustomerData} from "./customerData";
-import {Router} from "aurelia-router";
+import {CustomerData} from './customerData';
+import {Router} from 'aurelia-router';
+
 @inject(CustomerData, Router)
 export class List {
   heading = 'Customer management';
@@ -9,7 +10,6 @@ export class List {
 
   constructor(data, router) {
     this.service = data;
-    this.currentPage = 0;
     this.router = router;
   };
 
@@ -24,13 +24,10 @@ export class List {
   getData() {
     //implement spinner
 
-    this.currentPage++;
     return this.service.getAll()
       .then(customers => {
-       this.customers = customers;
-       
+       this.customers = customers;       
      });
-
   }
 
   activate() {
