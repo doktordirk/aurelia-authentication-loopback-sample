@@ -1,14 +1,13 @@
-# Aurelia-loopback-sample
-This repository goes together with a blog post on blog.opinionatedapps.com where the sample is created in a step-by-step manner based on yeoman for both aurelia and loopback.
+# Aurelia-auth-loopback-sample
 
-http://blog.opinionatedapps.com/build-a-minimalist-crm-app-in-5-minutes-with-aurelia-and-loopback/
+This is a largely enhanced sample based on paul van bladel's aurelia-loopback-sample(https://github.com/paulvanbladel/aurelia-loopback-sample/).
 
-You can also simply clone this repository and you get immediately the end result presented in the blog article.
+This version uses (finally) aurelia-api, aurelia-auth and loopback-component-satellizer for authorized rest api access
 
 ## Installation instructions
 ```
-git clone https://github.com/paulvanbladel/aurelia-loopback-sample.git
-cd aurelia-loopback-sample
+git clone https://github.com/dirkeisinger/aurelia-auth-loopback-sample.git
+cd aurelia-auth-loopback-sample
 npm install
 cd client
 npm install
