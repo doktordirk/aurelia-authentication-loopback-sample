@@ -1,10 +1,33 @@
 {
   "name": "aurelia-auth-loopback",
   "version": "1.1.0",
+  "description": "Sample aurelia-auth loopback application",
   "main": "server/server.js",
   "scripts": {
-    "pretest": "jshint ."
+    "pretest": "gulp lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doktordirk/aurelia-auth-loopback-sample"
+  },
+  "keywords": [
+    "aurelia",
+    "oauth",
+    "authentication",
+    "loopback"
+  ],
+  "author": "doktordirk <doktordirk@outlook.de>",
+  "contributors": [
+    {
+      "name": "paul van bladel",
+      "url": "https://github.com/paulvanbladel"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spoonx/aurelia-auth/issues"
+  },
+  "homepage": "https://github.com/spoonx/aurelia-auth#readme",
   "dependencies": {
     "compression": "^1.0.3",
     "cors": "^2.5.2",
@@ -15,14 +38,22 @@
     "serve-favicon": "^2.0.1"
   },
   "optionalDependencies": {
-        "loopback-component-explorer": "^2.1.1"
+    "loopback-component-explorer": "^2.1.1"
   },
   "devDependencies": {
-    "jshint": "^2.9.1-rc2"
+    "aurelia-tools": "^0.1.17",
+    "conventional-changelog": "0.0.11",
+    "gulp": "^3.8.10",
+    "gulp-bump": "^1.0.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-yuidoc": "^0.1.2",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.0.2",
+    "yargs": "^2.1.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/doktordirk/aurelia-auth-loopback-sample"
-  },
-  "description": "Sample aurelia-auth loopback application"
+  "directories": {
+    "doc": "doc"
+  }
 }
