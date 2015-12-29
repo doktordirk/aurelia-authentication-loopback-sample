@@ -19,6 +19,11 @@
             disabled.bind="isUnchanged">
             Save
             </button>
+            <button class="btn btn-info"
+            click.delegate="delete()"
+            disabled.bind="!isUnchanged">
+            Delete
+            </button>
         </div>
         <div class="panel-body">
             <form class="form-horizontal"

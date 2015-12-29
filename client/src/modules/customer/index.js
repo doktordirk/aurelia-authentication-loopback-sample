@@ -1,4 +1,22 @@
+import {inject} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-fetch-client';
+import 'fetch';
+
+@inject(HttpClient)
 export class Index {
+
+  constructor(http) {
+    this.http = http;
+  }
+
+  activate() {
+    this.http.configure(config => {
+      config
+        .useStandardConfiguration()
+        .withBaseUrl('api/');
+    });
+  }
+
   configureRouter(config, router) {
     config.map([
       {route: ['', 'list'], moduleId: './list', name: 'list'},
@@ -8,10 +26,4 @@ export class Index {
 
     this.router = router;
   }
-
 }
-
-
-
-
-
