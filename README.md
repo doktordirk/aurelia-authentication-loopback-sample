@@ -1,12 +1,12 @@
 # Aurelia-auth-loopback-sample
 
-This is a largely enhanced sample based on paul van bladel's aurelia-loopback-sample(https://github.com/paulvanbladel/aurelia-loopback-sample/).
+This is an enhanced sample based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/).
 
-This version uses (finally) aurelia-api, aurelia-auth and loopback-component-satellizer for authorized rest api access
+This version uses (finally) aurelia-api, aurelia-auth and loopback-component-satellizer for authorized rest api access.
 
 ## Installation instructions
 ```
-git clone https://github.com/dirkeisinger/aurelia-auth-loopback-sample.git
+git clone https://github.com/dirkeisinger/aurelia-auth-loopback-sample
 cd aurelia-auth-loopback-sample
 npm install
 cd client
