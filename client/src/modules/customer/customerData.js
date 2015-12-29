@@ -22,6 +22,10 @@ export class CustomerData {
     return this.rest.find(this.modelPath);  
   }
 
+  delete(customer) {
+    return this.rest.destroy(this.modelPath, customer.id)
+  }
+
   save(customer) {
     let request;
 

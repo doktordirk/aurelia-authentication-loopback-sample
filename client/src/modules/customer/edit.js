@@ -1,7 +1,6 @@
-import {inject} from "aurelia-framework";
-import {CustomerData} from "./customerData";
-import {Router} from "aurelia-router";
-//import {Validation} from "aurelia-validation";
+import {inject} from 'aurelia-framework';
+import {CustomerData} from './customerData';
+import {Router} from 'aurelia-router';
 
 @inject(CustomerData, Router)
 export class Edit {
@@ -12,7 +11,6 @@ export class Edit {
   }
 
   cancel(){
-    //this.customer = this.original;
     return this._loadCustomer(this.customer.id);
   }
 
@@ -28,25 +26,35 @@ export class Edit {
        return this._loadCustomer(params.id);
     }
   }
+
   _loadCustomer(id){
     return this.data.getById(id)
         .then(customer => {
           this.original = JSON.parse(JSON.stringify(customer));
           return this.customer = customer;
         });
-  };
+  }
+
+  delete() {
+    this.data.delete(this.customer)
+      .then(()=>{
+        this.router.navigate("list");
+      })
+  }
 
   get isUnchanged(){
     return this.areEqual(this.customer, this.original);
   }
+
   save() {
     this.data.save(this.customer)
       .then(customer => {
         this.original = JSON.parse(JSON.stringify(customer));
         this.router.navigate("list");
       });
-  };
+  }
+
   areEqual(obj1, obj2) {
-  return Object.keys(obj1).every((key) => obj2.hasOwnProperty(key) && (obj1[key] === obj2[key]));
-};
+    return Object.keys(obj1).every((key) => obj2.hasOwnProperty(key) && (obj1[key] === obj2[key]));
+  }
 }
