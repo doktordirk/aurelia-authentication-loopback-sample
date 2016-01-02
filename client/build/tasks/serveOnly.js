@@ -4,10 +4,8 @@ var proxy = require('proxy-middleware');
 var url = require('url');
 var paths = require('../paths');
 
-// this task utilizes the browsersync plugin
-// to create a dev server instance
-// at http://localhost:nodeJsPort
-gulp.task('serve', ['build', 'node'], function(done) {
+gulp.task('serveOnly', ['node'], function(done) {
+
   var proxyOptionsAccessControl = function(req,res, next){
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();
@@ -19,7 +17,6 @@ gulp.task('serve', ['build', 'node'], function(done) {
   proxyOptionsAuthRoute.route = '/auth';
 
   browserSync({
-    online: false,
     open: false,
     port: paths.webServerPort,
     server: {
