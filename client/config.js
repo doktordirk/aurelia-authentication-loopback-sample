@@ -14,11 +14,10 @@ System.config({
   },
 
   map: {
-    "SpoonX/aurelia-api": "github:SpoonX/aurelia-api@1.2.1",
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-beta.1.0.2",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
-    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.6",
+    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.7",
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-beta.1.0.1",
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0-beta.1.0.1",
     "aurelia-logging-console": "npm:aurelia-logging-console@1.0.0-beta.1",
@@ -32,13 +31,9 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "fetch": "github:github/fetch@0.10.1",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "spoonx/aurelia-api": "github:spoonx/aurelia-api@1.2.2",
+    "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@master",
     "text": "github:systemjs/plugin-text@0.0.3",
-    "github:SpoonX/aurelia-api@1.2.1": {
-      "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
-      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.6",
-      "extend": "npm:extend@3.0.0",
-      "querystring": "github:jspm/nodelibs-querystring@0.1.0"
-    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -53,6 +48,18 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "github:spoonx/aurelia-api@1.2.2": {
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
+      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.7",
+      "extend": "npm:extend@3.0.0",
+      "querystring": "github:jspm/nodelibs-querystring@0.1.0"
+    },
+    "github:spoonx/aurelia-auth@master": {
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
+      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.7",
+      "aurelia-router": "npm:aurelia-router@1.0.0-beta.1",
+      "spoonx/aurelia-api": "github:spoonx/aurelia-api@1.2.2"
     },
     "github:twbs/bootstrap@3.3.6": {
       "jquery": "github:components/jquery@2.1.4"
@@ -73,7 +80,7 @@ System.config({
     },
     "npm:aurelia-bootstrapper@1.0.0-beta.1": {
       "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0-beta.1",
-      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.6",
+      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.7",
       "aurelia-history": "npm:aurelia-history@1.0.0-beta.1",
       "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-beta.1.0.1",
       "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0-beta.1.0.1",
@@ -99,7 +106,7 @@ System.config({
     "npm:aurelia-fetch-client@1.0.0-beta.1.0.2": {
       "core-js": "npm:core-js@1.2.6"
     },
-    "npm:aurelia-framework@1.0.0-beta.1.0.6": {
+    "npm:aurelia-framework@1.0.0-beta.1.0.7": {
       "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.0.3",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1",
       "aurelia-loader": "npm:aurelia-loader@1.0.0-beta.1",

@@ -3,7 +3,7 @@ var serverBaseDir = path.normalize('./../server');
 var appRoot = 'src/';
 var outputRoot = 'dist/';
 var exportSrvRoot = 'export/';
-var nodeStartupScript = 'app.js';
+var nodeStartupScript = 'server.js';
 
 module.exports = {
   root: appRoot,

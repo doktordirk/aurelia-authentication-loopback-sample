@@ -1,40 +1,55 @@
-var configForDevelopment = {
-	providers: {
-		google: {
-			clientId: '239531826023-ibk10mb9p7ull54j55a61og5lvnjrff6.apps.googleusercontent.com'
-		} 
-		,
-		linkedin:{
-			clientId:'778mif8zyqbei7'
-		},
-		facebook:{
-			clientId:'1452782111708498'
-		}
-	}
+// auth config when running on localhost
+let configForDevelopment = {
+  baseUrl: '',  // server url. already set in main.js to localhost:300/api
+  httpInterceptor: true, // true=add auth token to all! http headers
+  loginUrl: 'users/login',    // api login url
+  signupUrl: 'users',  // api signup url
+  profileUrl: 'users/me', // api profile url
+  unlinkUrl: 'users/me/unlink/', // api third-party unlink url
+  loginOnSignup: false,
+  loginRedirect: '/#profile',  // internal aurelia redirect root
+  signupRedirect: '/#confirmed', // internal aurelia redirect root
+  tokenName: 'id',  // key of the token in api response. 'id' for loopback
+  userIdName: 'userId',
+  tokenPrefix: 'aurelia', // custom prefix for storage
+  authToken: '',  // 'prefix' for header token. ''=empty for loopback
+
+  providers: {
+    facebook: {
+      name: 'facebook',
+      url: 'users/facebook',  // api route to facebook model
+      clientId: '937004143046787',  // id of the facebook app
+      authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
+      redirectUri: window.location.origin + '/' || window.location.protocol + '//' + window.location.host + '/',
+      scope: ['email'],  // requested permissions
+      scopeDelimiter: ',',
+      nonce: function() {
+        return Math.random();
+      },
+      requiredUrlParams: ['nonce', 'display', 'scope'],
+      display: 'popup',
+      type: '2.5',
+      popupOptions: { width: 580, height: 400 }
+    }
+  }
 };
 
-var configForProduction = {
-	providers: {
-		google: {
-			clientId: '239531826023-3ludu3934rmcra3oqscc1gid3l9o497i.apps.googleusercontent.com'
-		} 
-		,
-		linkedin:{
-			clientId:'7561959vdub4x1'
-		},
-		facebook:{
-			clientId:'1653908914832509'
-		}
+// auth config when running on host (eg openshift)
+let configForProduction = {
+  providers: {
+    facebook: {
+      clientId: '1653908914832509'
+    }
 
-	}
+  }
 };
-var config ;
-if (window.location.hostname==='localhost') {
-	config = configForDevelopment;
-}
-else{
-	config = configForProduction;
-}
 
+// select config based on url
+let config;
+if (window.location.hostname === 'localhost') {
+  config = configForDevelopment;
+} else {
+  config = configForProduction;
+}
 
 export default config;

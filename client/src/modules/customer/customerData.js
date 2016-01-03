@@ -1,10 +1,10 @@
 import {inject} from 'aurelia-framework';
-import {Rest} from 'SpoonX/aurelia-api';
+import {Rest} from 'spoonx/aurelia-api';
 
 @inject(Rest)
 export class CustomerData {
 
-  model = 'customers';
+  model = 'users/me/customers';
 
   constructor(rest) {
     this.rest = rest;
@@ -15,15 +15,15 @@ export class CustomerData {
   }
 
   getById(id) {
-    return this.rest.find(this.modelPath, id); 
+    return this.rest.find(this.modelPath, id);
   }
-  
+
   getAll() {
-    return this.rest.find(this.modelPath);  
+    return this.rest.find(this.modelPath);
   }
 
   delete(customer) {
-    return this.rest.destroy(this.modelPath, customer.id)
+    return this.rest.destroy(this.modelPath, customer.id);
   }
 
   save(customer) {
@@ -31,8 +31,7 @@ export class CustomerData {
 
     if (customer.id) {
       request = this.rest.update(this.modelPath, customer.id, customer);
-    }
-    else {
+    } else {
       request = this.rest.create(this.modelPath, customer);
     }
 

@@ -1,16 +1,19 @@
 import 'bootstrap';
+import 'fetch';  // fetch polyfill
+
+import authConfig from './authConfig';
 
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .developmentLogging();
-
-  //Uncomment the line below to enable animation.
-  aurelia.use.plugin('aurelia-animator-css');
-  //if the css animator is enabled, add swap-order="after" to all router-view elements
-
-  //Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
-  //aurelia.use.plugin('aurelia-html-import-template-loader')
+    .developmentLogging() // enable debug logging
+    .plugin('spoonx/aurelia-api', config => {
+      config.useStandardConfiguration().withBaseUrl('http://localhost:3000/api/');
+    })
+    .plugin('spoonx/aurelia-auth', config => {
+      config.configure(authConfig);
+    })
+    .plugin('aurelia-animator-css');
 
   aurelia.start().then(a => a.setRoot());
 }
