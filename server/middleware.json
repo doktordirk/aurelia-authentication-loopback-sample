@@ -14,13 +14,25 @@
   },
   "session": {},
   "auth": {},
-  "parse": {},
-  "routes": {},
-  "files": {},
+  "parse": {
+    "body-parser#json": {}
+  },
+  "routes": {
+    "loopback#rest": {
+      "paths": [
+        "${restApiRoot}"
+      ]
+    }
+  },
+  "files": {
+    "loopback#static": {
+      "params": "$!../client"
+    }
+  },
   "final": {
     "loopback#urlNotFound": {}
   },
   "final:after": {
-    "errorhandler": {}
+    "loopback#errorHandler": {}
   }
 }
