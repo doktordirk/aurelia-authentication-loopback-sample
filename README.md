@@ -1,8 +1,9 @@
 # Aurelia-auth-loopback-sample
 
-This is an enhanced sample based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/).
+This is a basic sample for an [aurelia](http://aurelia.io/) client using [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized access to a [Strongloop](http://loopback.io/) loopback api server based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/) and [aurelia-auth-sample](https://github.com/paulvanbladel/aurelia-auth-sample/)
+..
 
-This version uses (finally) aurelia-api, aurelia-auth and loopback-component-satellizer for authorized rest api access.
+This version uses [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) and [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized rest api access.
 
 ## Installation instructions
 ```
@@ -14,19 +15,26 @@ npm install
 jspm install
 ```
 
-##how to run the sample
-You need to open two command prompts. One in the client folder and one in the server folder.
-In the server folder type:
+##How to run the sample
+In the root folder type:
 ```
-node server.js
+npm start
 ```
-This should give following output:
+This builds the aurelia-client and serves client and api. Then open `http://localhost:3000` and sign up or use the provided user email:user@example.com / password:none
+
+##What's in it
+
+The [loopback](https://docs.strongloop.com/display/public/LB/LoopBack) api server has a user and a customer model with ACL.
 ```
-λ node server.js
-Browse your REST API at http://localhost:3000/explorer
-Web server listening at: http://localhost:3000/
+user hasMany customers
+customer belongsTo user
 ```
-In the client folder type:
-```
-gulp watch
-```
+Unauthorized users only can list the customers. Authorized users additionally can manage their own customers. See the models in common/models.
+
+By default loopback uses a session token for authorization. This basic version does not use third-party authorization.
+
+A local file is used as database. Have a peek at `mydata.json` to gain some insight.
+
+Install loopback-component-explorer with `npm install loopback-component-explorer --save-dev` to use the loopback api explorer (free registration needed).
+
+Use `npm install strongloop -g` for the [Strongloop](http://loopback.io/) suite 
