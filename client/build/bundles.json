@@ -25,12 +25,14 @@
         "aurelia-history-browser",
         "aurelia-logging-console",
         "bootstrap",
-        "bootstrap/css/bootstrap.css!text"
+        "bootstrap/css/bootstrap.css!text",
+        "spoonx/aurelia-api",
+        "spoonx/aurelia-auth"
       ],
       "options": {
         "inject": true,
         "minify": true,
-        "rev": true
+        "rev": false
       }
     }
   }
