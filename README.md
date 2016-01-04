@@ -1,6 +1,8 @@
 # Aurelia-auth-loopback-sample
 
-This is a basic sample for an [aurelia](http://aurelia.io/) client using [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized access to a [Strongloop](http://loopback.io/) loopback api server based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/) and [aurelia-auth-sample](https://github.com/paulvanbladel/aurelia-auth-sample/)
+This is a basic sample for an [Aurelia](http://aurelia.io/) client using [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized access to a [Strongloop](http://loopback.io/) loopback api server based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/) and [aurelia-auth-sample](https://github.com/paulvanbladel/aurelia-auth-sample/)
+
+Comments on aurelia gitter and push requests welcome.
 ..
 
 This version uses [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) and [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized rest api access.
@@ -15,14 +17,21 @@ npm install
 jspm install
 ```
 
-##How to run the sample
+### Optional:
+
+Install loopback-component-explorer with `npm install loopback-component-explorer --save-dev` to use the loopback api explorer (free registration needed).
+
+Use `npm install strongloop -g` for the [Strongloop](http://loopback.io/) suite
+
+## How to run the sample
+
 In the root folder type:
 ```
 npm start
 ```
-This builds the aurelia-client and serves client and api. Then open `http://localhost:3000` and sign up or use the provided user email:user@example.com / password:none
+This builds the aurelia-client and serves client and api. Open `http://localhost:3000` to sign up or use the provided user email:user@example.com / password:none
 
-##What's in it
+## What's in it
 
 The [loopback](https://docs.strongloop.com/display/public/LB/LoopBack) api server has a user and a customer model with ACL.
 ```
@@ -35,6 +44,154 @@ By default loopback uses a session token for authorization. This basic version d
 
 A local file is used as database. Have a peek at `mydata.json` to gain some insight.
 
-Install loopback-component-explorer with `npm install loopback-component-explorer --save-dev` to use the loopback api explorer (free registration needed).
+## Details
+### Project structure
+#### Server:
+```
+/server
+/common
+(/build)
+(/doc)
+```
+##### server/server.js
 
-Use `npm install strongloop -g` for the [Strongloop](http://loopback.io/) suite 
+The server entry point. The only interesting part is at the bottom. Here we are setting up a `/users/me ` path which is a shortcut for authorized users to `/users/:userid`.
+```
+app.use(loopback.token({
+    model: app.models.accessToken,
+    currentUserLiteral: 'me'
+}));
+```
+##### server/model-config.json
+
+The model declarations tions including which datasource they use. in this case we us `db` (see datasources.json). Here we declare our user and customer model, as well as the build-in models ACL, AccessToken, Role, RoleMapping which hold the Access control, authorization tokens and roles (eg `$owner`, `$authorized`) for our custom models.
+
+##### server/datasources.json
+
+Defines our datasources. In this case we only have `db` which points to a local file (relative to the current working directory which is /client with the current start script).
+
+##### common/models/customer.json
+
+Here we define our `customer` model.
+We use/inherit the build-in `PersistedModel`.
+```
+"base": "PersistedModel",
+```
+Define the `properties` of the `customer`
+```
+"properties": ..
+```
+Define the `relations` of the `customer`. Here `belongsTo` `user` identified by `userId`.
+```
+"relations": {
+  "user": {
+    "type": "belongsTo",
+    "model": "user",
+    "foreignKey": "userId",
+    "options": {
+      "validate": true,
+      "forceId": false
+    }
+  }
+},
+```
+Define the access to the rest api methods. First deny *=all, but READ for `$everyone`. Then allow create for `$authenticated` and *=all for `$owner` (of a customer entry)
+```
+"acls": [
+  {
+    "accessType": "*",
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "DENY"
+  },
+  {
+    "accessType": "READ",
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "ALLOW"
+  },
+  {
+    "accessType": "EXECUTE",
+    "principalType": "ROLE",
+    "principalId": "$authenticated",
+    "permission": "ALLOW",
+    "property": "create"
+  },
+  {
+    "accessType": "*",
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW"
+  }
+],
+```
+##### common/models/customer.js
+
+With setting "public" for customer in model-config.json the whole rest api gets exposed. Here we remove again all the default rest methods of `PersistedModel` we don't want.
+
+##### common/models/user.json
+
+Here we define our `user` model.
+We use/inherit the build-in `User`. This gets us the expected properties and methods for user accounts (accessToken, ACL for eg. login, signup, update etc)
+```
+"base": "User",
+```
+Define the `properties` of the `user`
+```
+"properties": ..
+```
+Define the `relations` of the `user`. Here `hasMany` `customers` identified by `userId`.
+```
+"relations": {
+  "customers": {
+    "type": "hasMany",
+    "model": "customer",
+    "foreignKey": "userId",
+    "options": {
+      "validate": true,
+      "forceId": false
+    }
+  }
+},
+```
+Define the access to the rest api methods. With inheriting the build-in model `User` the common permission for accounts are already set. We need to allow the user access to their `costomers` though. For simplicity, we all just *=all for `$owner`.
+```
+"acls": [
+  {
+    "accessType": "*",
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW"
+  }
+],
+```
+#### Client:
+
+- /client : the Aurelia client app project based on aurelia-skelton-app 1.0.0-beta.1.0.4 and paulvanbladel's work.
+- /src : base views and configuration files for the router and aurelia-auth
+- /src/modules : single main views. particularly the customers view for unauthorized users
+- /src/modules/auth : user authentification files eg signup, login ..
+- /src/modules/customer : customer management for authenticated users
+
+##### main.js
+setup aurelia-api with a baseUrl and configure aurelia-auth.
+##### authConfig.js
+configuration for aurelia-auth to match put loopback server. Have a look in there.
+##### main.js
+basic config for the fetch client for aurelia-auth-sample.
+##### app.router.config.js
+adding the property `auth` to the routes and adding the pipeline step `AuthorizeStep` from aurelia-auth. This will hide those routes for unauthorized users.
+##### auth/*
+Uses the login/signup methods of aurelia-auth-sample.
+##### customers/*
+Uses aurelia-api for CRUD. Since we set `httpInterceptor:true` in `authConfig.js`, the authorization token is added to all request. Users can only edit their own customers as defined in `/common/models/user.json`.
+
+## Limitations
+
+spoonx/aurelia-api does not provide multiple endpoints yet. Thus switching endpoints is cumbersome and currently always send your token.
+
+## Plans
+
+- Better scripts
+- Third-party login with [loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer)
+- Simple multiple endpoints using hopefully coming [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) improvements
