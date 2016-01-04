@@ -11,8 +11,7 @@ export class Logout {
 
   activate() {
     // post logout to loopback server. deletes token on server
-    this.rest.post('users/logout')
-    .then(response=>{
+    this.rest.post('users/logout').then(response=>{
       console.log('ok logged out', response);
     })
     .catch(err=>{
@@ -21,6 +20,6 @@ export class Logout {
     .then(()=>{
       // delete local token and redirect in any case
       this.authService.logout('#/login');
-    })
+    });
   }
 }

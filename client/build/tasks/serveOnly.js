@@ -5,15 +5,14 @@ var url = require('url');
 var paths = require('../paths');
 
 gulp.task('serveOnly', ['node'], function(done) {
-
-  var proxyOptionsAccessControl = function(req,res, next){
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
+  var proxyOptionsAccessControl = function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
   };
-  var proxyOptionsApiRoute = url.parse('http://localhost:' + paths.nodeJsPort +  '/api') ;
+  var proxyOptionsApiRoute = url.parse('http://localhost:' + paths.nodeJsPort + '/api');
   proxyOptionsApiRoute.route = '/api';
 
-  var proxyOptionsAuthRoute = url.parse('http://localhost:' + paths.nodeJsPort +  '/auth') ;
+  var proxyOptionsAuthRoute = url.parse('http://localhost:' + paths.nodeJsPort + '/auth');
   proxyOptionsAuthRoute.route = '/auth';
 
   browserSync({
@@ -22,8 +21,8 @@ gulp.task('serveOnly', ['node'], function(done) {
     server: {
       baseDir: ['.'],
       middleware: [
-        proxyOptionsAccessControl, 
-        proxy(proxyOptionsApiRoute), 
+        proxyOptionsAccessControl,
+        proxy(proxyOptionsApiRoute),
         proxy(proxyOptionsAuthRoute)]
     }
   }, done);

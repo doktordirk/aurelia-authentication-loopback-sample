@@ -27,4 +27,7 @@ boot(app, __dirname, function(err) {
 });
 
 //setting up a /users/me path for logged in uses
-app.use(loopback.token({ model: app.models.accessToken, currentUserLiteral: 'me' }));
+app.use(loopback.token({
+    model: app.models.accessToken,
+    currentUserLiteral: 'me'
+}));
