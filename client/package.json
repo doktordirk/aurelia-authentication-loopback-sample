@@ -1,6 +1,6 @@
 {
   "name": "aurelia-auth-loopback-client",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "skelton-version": "1.0.0-beta.1.0.4",
   "description": "A starter kit for building a standard navigation-style app with Aurelia.",
   "keywords": [

@@ -1,6 +1,6 @@
 {
   "name": "aurelia-auth-loopback",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Sample aurelia-auth loopback application",
   "main": "server/server.js",
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/doktordirk/aurelia-auth-loopback-sample#readme",
   "dependencies": {
-   "async": "~0.9.0",
+    "async": "~0.9.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "errorhandler": "^1.4.2",
