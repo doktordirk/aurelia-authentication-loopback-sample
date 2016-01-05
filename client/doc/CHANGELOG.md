@@ -1,3 +1,17 @@
+<a name"1.2.1"></a>
+### 1.2.1 (2016-01-05)
+
+
+#### Bug Fixes
+
+* **user.json:** Removed unneeded acls ([68b7284a](http://github.com/aurelia/skeleton-navigation/commit/68b7284a))
+
+
+#### Features
+
+* **project:** Added facebook login using loopback-component-satellizer ([cedeedaf](http://github.com/aurelia/skeleton-navigation/commit/cedeedaf))
+
+
 <a name"1.2.0"></a>
 ## 1.2.0 (2016-01-03)
 
