@@ -5,19 +5,18 @@ let configForDevelopment = {
   loginUrl: 'users/login',    // api login url
   signupUrl: 'users',  // api signup url
   profileUrl: 'users/me', // api profile url
-  unlinkUrl: 'users/me/unlink/', // api third-party unlink url
+  unlinkUrl: 'users/me/unlink/', // api unlink third-party url
   loginOnSignup: false,
   loginRedirect: '/#profile',  // internal aurelia redirect root
   signupRedirect: '/#confirmed', // internal aurelia redirect root
   tokenName: 'id',  // key of the token in api response. 'id' for loopback
-  userIdName: 'userId',
   tokenPrefix: 'aurelia', // custom prefix for storage
   authToken: '',  // 'prefix' for header token. ''=empty for loopback
 
   providers: {
     facebook: {
       name: 'facebook',
-      url: 'users/facebook',  // api route to facebook model
+      url: 'users/facebook',  // api route to facebook methods
       clientId: '937004143046787',  // id of the facebook app
       authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
       redirectUri: window.location.origin + '/' || window.location.protocol + '//' + window.location.host + '/',
@@ -38,7 +37,7 @@ let configForDevelopment = {
 let configForProduction = {
   providers: {
     facebook: {
-      clientId: '1653908914832509'
+      clientId: 'App ID'
     }
 
   }

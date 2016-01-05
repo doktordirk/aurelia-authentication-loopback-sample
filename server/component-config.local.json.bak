@@ -1,0 +1,9 @@
+{
+  "loopback-component-satellizer": {
+	  "facebook": {
+	    "credentials": {
+        "private": "your facebook App Secret"
+	    }
+	  }
+	}
+}

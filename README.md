@@ -2,6 +2,8 @@
 
 This is a basic sample for an [Aurelia](http://aurelia.io/) client using [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized access to a [Strongloop](http://loopback.io/) loopback api server based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/) and [aurelia-auth-sample](https://github.com/paulvanbladel/aurelia-auth-sample/)
 
+[loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer) is used to handle third-party authorization on the server side.
+
 Comments on aurelia gitter and push requests welcome.
 ..
 
@@ -16,12 +18,20 @@ cd client
 npm install
 jspm install
 ```
+#### Third-party login
+For facebook:
+You'll need a facebook developer account (developers.facebook.com). Add a new website app (skip quick start).
+You'll find your facebook app credentials in `Settings->Basic`: App ID (which is public) and App Secret (which is private, so don't upload that one on github or alike). Set the website url there to eg `http:/localhost`. In `Settings->Advanced` in `Client OAuth Settings->Valid OAuth redirect URIs` add `http:/localhost:4000`. That's the default client address in this project.
+
+Copy `/server/component-config.local.json.bak` to `/server/component-config.local.json` and add your facebook App Secret. Loopback applies *.local.json and *.local.js setting files after the default ones. They are added to .gitignore as they should not be publicly uploaded.
+
+Open `/client/src/authConfig.js` and add your public facebook clientId=App ID
 
 ### Optional:
 
-Install loopback-component-explorer with `npm install loopback-component-explorer --save-dev` to use the loopback api explorer (free registration needed).
+Install loopback-component-explorer with `npm install loopback-component-explorer --save-dev` to use the loopback api explorer (recommended, free registration needed).
 
-Use `npm install strongloop -g` for the [Strongloop](http://loopback.io/) suite
+Use `npm install strongloop -g` for the [Strongloop](http://loopback.io/) suite (recommended).
 
 ## How to run the sample
 
@@ -64,11 +74,38 @@ app.use(loopback.token({
 ```
 ##### server/model-config.json
 
-The model declarations tions including which datasource they use. in this case we us `db` (see datasources.json). Here we declare our user and customer model, as well as the build-in models ACL, AccessToken, Role, RoleMapping which hold the Access control, authorization tokens and roles (eg `$owner`, `$authorized`) for our custom models.
+The model declaration including which datasource they use. in this case we us `db` (see datasources.json). Here we declare our user and customer model, as well as the build-in models ACL, AccessToken, Role, RoleMapping which hold the Access control, authorization tokens and roles (eg `$owner`, `$authorized`) for our custom models.
 
 ##### server/datasources.json
 
 Defines our datasources. In this case we only have `db` which points to a local file (relative to the current working directory which is /client with the current start script).
+
+##### server/component-config.json
+
+Sets up out components. `"model": "user"` adds the facebook methods to our account model `user`. In "fields" we'll tell facebook which data we want to retrieve. "uri" is the relative (to the model) path of the facebook methods. "mapping" maps the facebook data keys to the keys we use in our user model.
+```
+"loopback-component-satellizer": {
+  "facebook": {
+    "model": "user",
+    "credentials": {
+      "public": "your App ID",
+      "private": "your App Secret"
+    },
+    "version": "v2.5",
+    "fields": ["email","name","last_name","first_name","gender","birthday"],
+    "uri": "/facebook",
+    "mapping": {
+      "id": "facebook",
+      "email": "email",
+      "first_name": "firstName",
+      "last_name": "lastName",
+      "name": "displayName",
+      "gender": "gender",
+      "birthday":"birthday"
+    }
+  }
+}
+```
 
 ##### common/models/customer.json
 
@@ -132,11 +169,11 @@ With setting "public" for customer in model-config.json the whole rest api gets 
 ##### common/models/user.json
 
 Here we define our `user` model.
-We use/inherit the build-in `User`. This gets us the expected properties and methods for user accounts (accessToken, ACL for eg. login, signup, update etc)
+We use/inherit the build-in `User`. This gets us the expected properties and methods for user accounts (accessToken, ACL for eg. login, signup, update etc). Furthermore, in `/server/component-config.json` we set    `"model": "user"` for "loopback-component-satellizer"->"facebook". That adds the required remoteMethods to our user model which handle the facebook login on the server side.
 ```
 "base": "User",
 ```
-Define the `properties` of the `user`
+Define some additional `properties` of the `user`. Some we already inherited with the build-in User model, particularly the `email` property.
 ```
 "properties": ..
 ```
@@ -154,7 +191,7 @@ Define the `relations` of the `user`. Here `hasMany` `customers` identified by `
   }
 },
 ```
-Define the access to the rest api methods. With inheriting the build-in model `User` the common permission for accounts are already set. We need to allow the user access to their `costomers` though. For simplicity, we all just *=all for `$owner`.
+Define the access to the rest api methods. With inheriting the build-in model `User` the common permission for accounts are already set. We need to allow the user access to their `costomers` though. For simplicity, we all just *=all for `$owner`. As that doesn't include remoteMethods we need to add ACl for those (I haven't checked out facebook-get yet. I'll just added it for future use.).
 ```
 "acls": [
   {
@@ -162,9 +199,34 @@ Define the access to the rest api methods. With inheriting the build-in model `U
     "principalType": "ROLE",
     "principalId": "$owner",
     "permission": "ALLOW"
-  }
+  },
+  {
+    "accessType": "EXECUTE",
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW",
+    "property": "unlink"
+  },
+  {
+    "accessType": "EXECUTE",
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "ALLOW",
+    "property": "facebook"
+  },
+  {
+    "accessType": "EXECUTE",
+    "principalType": "ROLE",
+    "principalId": "$unauthenticated",
+    "permission": "ALLOW",
+    "property": "facebook-get"
+  }  
 ],
 ```
+##### common/models/user.js
+
+We need to add an unlink method for third-party logins. We add the route GET /:id/unlink/:provider which just deletes the facebook userid from a user.
+
 #### Client:
 
 - /client : the Aurelia client app project based on aurelia-skelton-app 1.0.0-beta.1.0.4 and paulvanbladel's work.
@@ -176,7 +238,15 @@ Define the access to the rest api methods. With inheriting the build-in model `U
 ##### main.js
 setup aurelia-api with a baseUrl and configure aurelia-auth.
 ##### authConfig.js
-configuration for aurelia-auth to match put loopback server. Have a look in there.
+configuration for aurelia-auth to match put loopback server. Have a look in there. Since we added the short cut /users/me for /users/:userid above, we can use that to access eg the profile.
+```
+unlinkUrl: 'users/me/unlink/',         // the unlike route we set above
+providers: {
+    clientId: 'your facebook App ID',  // id of the facebook app
+    url: 'users/facebook',             // api route to facebook methods we set above
+...
+}
+```
 ##### main.js
 basic config for the fetch client for aurelia-auth-sample.
 ##### app.router.config.js
@@ -193,5 +263,6 @@ spoonx/aurelia-api does not provide multiple endpoints yet. Thus switching endpo
 ## Plans
 
 - Better scripts
-- Third-party login with [loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer)
+- Email verification
+- Password reset
 - Simple multiple endpoints using hopefully coming [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) improvements

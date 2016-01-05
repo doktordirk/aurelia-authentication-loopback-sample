@@ -7,8 +7,23 @@
   },
   "protected": [],
   "properties": {
+    "facebook": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
     "displayName": {
       "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "birthday": {
+      "type": "date"
     }
   },
   "validations": [],
@@ -29,6 +44,27 @@
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "unlink"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "facebook"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "facebook-get"
     }
   ],
   "methods": {}

@@ -22,7 +22,7 @@ export class Profile {
  update() {
    return this.auth.updateMe(this.profile);
  }
-/*
+
  link(provider) {
    return this.auth.authenticate(provider, true, null)
   .then(response => this.auth.getMe())
@@ -35,5 +35,4 @@ export class Profile {
   .then(() => this.auth.getMe())
   .then(data => this.profile = data);
  }
-*/
 }

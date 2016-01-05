@@ -1,5 +1,22 @@
 {
   "loopback-component-explorer": {
     "mountPath": "/explorer"
-  }
+  },
+  "loopback-component-satellizer": {
+	  "facebook": {
+	    "model": "user",
+	    "version": "v2.5",
+	    "fields": ["email","name","last_name","first_name","gender","birthday"],
+	    "uri": "/facebook",
+	    "mapping": {
+	      "id": "facebook",
+	      "email": "email",
+	      "first_name": "firstName",
+	      "last_name": "lastName",
+	      "name": "displayName",
+	      "gender": "gender",
+	      "birthday":"birthday"
+	    }
+	  }
+	}
 }
