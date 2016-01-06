@@ -1,3 +1,12 @@
+<a name"1.2.2"></a>
+### 1.2.2 (2016-01-06)
+
+
+#### Features
+
+* **project:** Email verification added ([a3aab928](http://github.com/aurelia/skeleton-navigation/commit/a3aab928))
+
+
 <a name"1.2.1"></a>
 ### 1.2.1 (2016-01-05)
 
