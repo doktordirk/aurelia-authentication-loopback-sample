@@ -3,5 +3,24 @@
     "name": "db",
     "connector": "memory",
     "file":"../mydata.json"
+  },
+  "gmail": {
+    "name": "gmail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "username: set in same place in datasources.local/production.json",
+          "pass": "password: set in same place in datasources.local/production.json"
+        }
+      }
+    ]
   }
 }

@@ -13,10 +13,14 @@
       "./mixins"
     ]
   },
+  "Email": {
+    "dataSource": "gmail",
+    "public": false
+  },
   "user": {
     "dataSource": "db",
     "options": {
-      "emailVerificationRequired": false
+      "emailVerificationRequired": true
     }
   },
   "AccessToken": {

@@ -1,0 +1,9 @@
+{
+  "confirm" :  {
+    "type": "email",
+    "from": "noreply@loopback.com",
+    "subject": "Thanks for registering.",
+    "redirect": "/#confirmed",
+    "text": "Please activate your account by clicking on this link or copying and pasting it in a new browser window:\n\t{href}"
+  }
+}

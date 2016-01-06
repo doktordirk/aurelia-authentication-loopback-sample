@@ -16,7 +16,10 @@
 	      "name": "displayName",
 	      "gender": "gender",
 	      "birthday":"birthday"
-	    }
+	    },
+      "credentials": {
+        "private": "the App Serect: set in same place in component-config.local/production.json"
+      }
 	  }
 	}
 }

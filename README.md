@@ -1,5 +1,4 @@
 # Aurelia-auth-loopback-sample
-
 This is a basic sample for an [Aurelia](http://aurelia.io/) client using [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized access to a [Strongloop](http://loopback.io/) loopback api server based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/) and [aurelia-auth-sample](https://github.com/paulvanbladel/aurelia-auth-sample/)
 
 [loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer) is used to handle third-party authorization on the server side.
@@ -18,23 +17,34 @@ cd client
 npm install
 jspm install
 ```
+### Configuration
 #### Third-party login
-For facebook:
+Currently included is only facebook. But google+ and twitter are also included in [loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer)
+
+##### Facebook
 You'll need a facebook developer account (developers.facebook.com). Add a new website app (skip quick start).
 You'll find your facebook app credentials in `Settings->Basic`: App ID (which is public) and App Secret (which is private, so don't upload that one on github or alike). Set the website url there to eg `http:/localhost`. In `Settings->Advanced` in `Client OAuth Settings->Valid OAuth redirect URIs` add `http:/localhost:4000`. That's the default client address in this project.
 
-Copy `/server/component-config.local.json.bak` to `/server/component-config.local.json` and add your facebook App Secret. Loopback applies *.local.json and *.local.js setting files after the default ones. They are added to .gitignore as they should not be publicly uploaded.
+Copy `/server/component-config.local.json.bak` to `/server/component-config.local.json` and add your facebook App Secret. Loopback applies *.local.json and *.local.js setting files after the default *.json or *.js. *.local.json and *.local.js are added to .gitignore as they **should not be publicly uploaded**.
 
 Open `/client/src/authConfig.js` and add your public facebook clientId=App ID
 
-### Optional:
+#### Email verification
+Email verification after signup is enabled in `server/model-config.json` ->  `"user": { "options": {"emailVerificationRequired": true}}`.
 
+Currently included is gmail as email provider. Other options like sendMail are possible using Loopback components.
+
+##### Gmail
+For gmail to work you'll need to allow less secure apps to connect. You can do that with [Gmail settings for less secure apps](https://www.google.com/settings/security/lesssecureapps).
+
+Copy `/server/datasources.local.json.bak` to `/server/datasources.local.json` and add gmail username and password.
+
+### Optional:
 Install loopback-component-explorer with `npm install loopback-component-explorer --save-dev` to use the loopback api explorer (recommended, free registration needed).
 
 Use `npm install strongloop -g` for the [Strongloop](http://loopback.io/) suite (recommended).
 
 ## How to run the sample
-
 In the root folder type:
 ```
 npm start
@@ -42,8 +52,8 @@ npm start
 This builds the aurelia-client and serves client and api. Open `http://localhost:3000` to sign up or use the provided user email:user@example.com / password:none
 
 ## What's in it
-
-The [loopback](https://docs.strongloop.com/display/public/LB/LoopBack) api server has a user and a customer model with ACL.
+#### Sever
+A [loopback](https://docs.strongloop.com/display/public/LB/LoopBack) api server with a user and a customer model with ACL.
 ```
 user hasMany customers
 customer belongsTo user
@@ -53,6 +63,9 @@ Unauthorized users only can list the customers. Authorized users additionally ca
 By default loopback uses a session token for authorization. This basic version does not use third-party authorization.
 
 A local file is used as database. Have a peek at `mydata.json` to gain some insight.
+
+#### Client
+An aurelia client app with authorized pages for user profile and customer management and unauthorized pages for login, signup and customer listing.
 
 ## Details
 ### Project structure
@@ -64,7 +77,6 @@ A local file is used as database. Have a peek at `mydata.json` to gain some insi
 (/doc)
 ```
 ##### server/server.js
-
 The server entry point. The only interesting part is at the bottom. Here we are setting up a `/users/me ` path which is a shortcut for authorized users to `/users/:userid`.
 ```
 app.use(loopback.token({
@@ -73,15 +85,12 @@ app.use(loopback.token({
 }));
 ```
 ##### server/model-config.json
-
 The model declaration including which datasource they use. in this case we us `db` (see datasources.json). Here we declare our user and customer model, as well as the build-in models ACL, AccessToken, Role, RoleMapping which hold the Access control, authorization tokens and roles (eg `$owner`, `$authorized`) for our custom models.
 
 ##### server/datasources.json
-
-Defines our datasources. In this case we only have `db` which points to a local file (relative to the current working directory which is /client with the current start script).
+Defines our datasources. In this case we have `db` to store our data which points to a local file (relative to the current working directory which is /client with the current start script). The `email` datasource configures your email server for transactional emails.
 
 ##### server/component-config.json
-
 Sets up out components. `"model": "user"` adds the facebook methods to our account model `user`. In "fields" we'll tell facebook which data we want to retrieve. "uri" is the relative (to the model) path of the facebook methods. "mapping" maps the facebook data keys to the keys we use in our user model.
 ```
 "loopback-component-satellizer": {
@@ -106,9 +115,10 @@ Sets up out components. `"model": "user"` adds the facebook methods to our accou
   }
 }
 ```
+##### server/email-config.json
+Configurations for transactional emails.
 
 ##### common/models/customer.json
-
 Here we define our `customer` model.
 We use/inherit the build-in `PersistedModel`.
 ```
@@ -163,11 +173,9 @@ Define the access to the rest api methods. First deny *=all, but READ for `$ever
 ],
 ```
 ##### common/models/customer.js
-
 With setting "public" for customer in model-config.json the whole rest api gets exposed. Here we remove again all the default rest methods of `PersistedModel` we don't want.
 
 ##### common/models/user.json
-
 Here we define our `user` model.
 We use/inherit the build-in `User`. This gets us the expected properties and methods for user accounts (accessToken, ACL for eg. login, signup, update etc). Furthermore, in `/server/component-config.json` we set    `"model": "user"` for "loopback-component-satellizer"->"facebook". That adds the required remoteMethods to our user model which handle the facebook login on the server side.
 ```
@@ -224,11 +232,13 @@ Define the access to the rest api methods. With inheriting the build-in model `U
 ],
 ```
 ##### common/models/user.js
+Adding hooks and additional remoteMethod for our user model.
 
-We need to add an unlink method for third-party logins. We add the route GET /:id/unlink/:provider which just deletes the facebook userid from a user.
+We added `User.afterRemote('create',..)` to send a verification email after signup. The email contains a link with a verification token to our api server which will redirect to our client if successful.
+
+The remoteMethod 'unlink' adds a third-party provider unlink route GET /:id/unlink/:provider which just deletes the providers userid from a user.
 
 #### Client:
-
 - /client : the Aurelia client app project based on aurelia-skelton-app 1.0.0-beta.1.0.4 and paulvanbladel's work.
 - /src : base views and configuration files for the router and aurelia-auth
 - /src/modules : single main views. particularly the customers view for unauthorized users
@@ -237,6 +247,7 @@ We need to add an unlink method for third-party logins. We add the route GET /:i
 
 ##### main.js
 setup aurelia-api with a baseUrl and configure aurelia-auth.
+
 ##### authConfig.js
 configuration for aurelia-auth to match put loopback server. Have a look in there. Since we added the short cut /users/me for /users/:userid above, we can use that to access eg the profile.
 ```
@@ -249,19 +260,20 @@ providers: {
 ```
 ##### main.js
 basic config for the fetch client for aurelia-auth-sample.
+
 ##### app.router.config.js
 adding the property `auth` to the routes and adding the pipeline step `AuthorizeStep` from aurelia-auth. This will hide those routes for unauthorized users.
+
 ##### auth/*
 Uses the login/signup methods of aurelia-auth-sample.
+
 ##### customers/*
 Uses aurelia-api for CRUD. Since we set `httpInterceptor:true` in `authConfig.js`, the authorization token is added to all request. Users can only edit their own customers as defined in `/common/models/user.json`.
 
 ## Limitations
-
 spoonx/aurelia-api does not provide multiple endpoints yet. Thus switching endpoints is cumbersome and currently always send your token.
 
 ## Plans
-
 - Better scripts
 - Email verification
 - Password reset

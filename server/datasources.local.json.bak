@@ -1,0 +1,12 @@
+{
+  "gmail": {
+    "transports": [
+      {
+        "auth": {
+          "user": "your gmail account username",
+          "pass": "your gmail account password"
+        }
+      }
+    ]
+  }
+}

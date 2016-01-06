@@ -1,4 +1,31 @@
+var emailConfig = require('../../server/email-config.json');
+var config = require('../../server/config.json');
+
 module.exports = function(User) {
+
+  // send verification email after registration
+  // User.afterRemote('create',..) is triggered
+  // after the User's remoteMethod 'create' was called
+  User.afterRemote('create', function(context, user, next) {
+    // setting up email options
+    var options = Object.assign(emailConfig.confirm, {
+      to: user.email,
+      user: user
+    });
+    options.redirect = encodeURIComponent(config.client + options.redirect);
+
+    // send email
+    user.verify(options, function(err, response) {
+      if (err) {
+        console.error('> email sent error:', err);
+        next(err);
+      }
+      else {
+        next();
+      }
+    });
+  });
+
   // --- third party unlink ---
   // unlink locally. stays linked on facebook currently
   User.unlink = function(id, provider, callback) {

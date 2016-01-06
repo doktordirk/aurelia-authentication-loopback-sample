@@ -23,6 +23,7 @@ export default class {
       { route: 'login',       name: 'login',      moduleId: './modules/auth/login',   nav: false, title: 'Login' },
       { route: 'logout',      name: 'logout',     moduleId: './modules/auth/logout',  nav: false, title: 'Logout', auth: true },
       { route: 'profile',     name: 'profile',    moduleId: './modules/auth/profile', nav: false, title: 'Profile', auth: true },
+      { route: 'confirm',     name: 'confirm',    moduleId: './modules/auth/confirm', nav: false, title: 'Confirm' },
       { route: 'confirmed',   name: 'confirmed',  moduleId: './modules/auth/confirmed', nav: false, title: 'Confirmed' }
      ]);
    };
