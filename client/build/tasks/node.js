@@ -1,13 +1,14 @@
 var gulp = require('gulp');
 var paths = require('../paths');
 var nodemon = require('gulp-nodemon');
-var plugin = require('gulp-load-plugins')({lazy: true});
 var browserSync = require('browser-sync');
+var util = require('gulp-util');
+
 gulp.task('node', function() {
   var nodeOptions = {
     script: paths.nodeStartUpScriptPath,
     delayTime: 1,
-    watch: ['./../server/**/*', './../common/**/*']
+    watch: ['./../server', './../common']
   };
 
   nodemon(nodeOptions)
@@ -27,5 +28,5 @@ gulp.task('node', function() {
     });
 });
 function log(msg) {
-  plugin.util.log(plugin.util.colors.green(msg));
+  util.log(util.colors.green(msg));
 }
