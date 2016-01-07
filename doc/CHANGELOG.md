@@ -1,3 +1,12 @@
+<a name"1.2.3"></a>
+### 1.2.3 (2016-01-07)
+
+
+#### Features
+
+* **project:** Reset Password option ([8bcc0681](git+https://github.com/doktordirk/aurelia-auth-loopback-sample/commit/8bcc0681))
+
+
 <a name"1.2.2"></a>
 ### 1.2.2 (2016-01-06)
 
