@@ -1,13 +1,15 @@
 import {inject} from 'aurelia-framework';
 import {CustomerData} from './customerData';
 import {Router} from 'aurelia-router';
+import {Notify} from 'modules/notify';
 
-@inject(CustomerData, Router)
+@inject(CustomerData, Router, Notify)
 export class Edit {
 
-  constructor(data, router) {
+  constructor(data, router, notify) {
     this.data = data;
     this.router = router;
+    this.notify = notify;
   }
 
   cancel() {
@@ -33,13 +35,20 @@ export class Edit {
           this.original = JSON.parse(JSON.stringify(customer));
           this.customer = customer;
           return this.customer;
-        });
+        })
+      .catch(error=>{
+        this.notify.error(error);
+        this.goBack();
+      });
   }
 
   delete() {
     this.data.delete(this.customer)
       .then(()=>{
         this.router.navigate('list');
+      })
+      .catch(error=>{
+        this.notify.error(error);
       });
   }
 
@@ -52,6 +61,9 @@ export class Edit {
       .then(customer => {
         this.original = JSON.parse(JSON.stringify(customer));
         this.router.navigate('list');
+      })
+      .catch(error=>{
+        this.notify.error(error);
       });
   }
 

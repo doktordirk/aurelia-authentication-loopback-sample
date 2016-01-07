@@ -32,8 +32,10 @@ System.config({
     "fetch": "github:github/fetch@0.10.1",
     "font-awesome": "npm:font-awesome@4.5.0",
     "spoonx/aurelia-api": "github:spoonx/aurelia-api@1.2.2",
-    "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@master",
+    "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@0.12.0",
+    "spoonx/aurelia-notification": "github:spoonx/aurelia-notification@master",
     "text": "github:systemjs/plugin-text@0.0.3",
+    "wavded/humane-js": "github:wavded/humane-js@3.2.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -55,11 +57,16 @@ System.config({
       "extend": "npm:extend@3.0.0",
       "querystring": "github:jspm/nodelibs-querystring@0.1.0"
     },
-    "github:spoonx/aurelia-auth@master": {
+    "github:spoonx/aurelia-auth@0.12.0": {
       "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
       "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.7",
       "aurelia-router": "npm:aurelia-router@1.0.0-beta.1",
       "spoonx/aurelia-api": "github:spoonx/aurelia-api@1.2.2"
+    },
+    "github:spoonx/aurelia-notification@master": {
+      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.7",
+      "aurelia-i18n": "npm:aurelia-i18n@0.4.4",
+      "wavded/humane-js": "github:wavded/humane-js@3.2.2"
     },
     "github:twbs/bootstrap@3.3.6": {
       "jquery": "github:components/jquery@2.1.4"
@@ -122,6 +129,17 @@ System.config({
       "aurelia-history": "npm:aurelia-history@1.0.0-beta.1",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.0.1",
       "core-js": "npm:core-js@1.2.6"
+    },
+    "npm:aurelia-i18n@0.4.4": {
+      "Intl.js": "github:andyearnshaw/Intl.js@0.1.4",
+      "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.0.3",
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0-beta.1",
+      "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0-beta.1.0.1",
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.0.1",
+      "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.0.2",
+      "aurelia-templating-resources": "npm:aurelia-templating-resources@1.0.0-beta.1.0.3",
+      "i18next": "github:i18next/i18next@1.11.2"
     },
     "npm:aurelia-loader-default@1.0.0-beta.1.0.1": {
       "aurelia-loader": "npm:aurelia-loader@1.0.0-beta.1",

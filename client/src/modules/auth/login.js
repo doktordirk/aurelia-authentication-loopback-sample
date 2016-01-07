@@ -18,21 +18,11 @@ export class Login {
      email: this.email,
      password: this.password
    })
-  .then(response => {
-    console.log('success logged', response);
-  })
-  .catch(response => {
-    console.error('login failure', response);
-  });
+    .catch(error => console.error(error));
  }
 
  authenticate(name) {
    return this.auth.authenticate(name, false, null)
-  .then(response => {
-    console.log('success authenticate', response);
-  })
-  .catch(response => {
-    console.error('authenticate failure', response);
-  });
+    .catch(error => console.error(error));
  }
 }

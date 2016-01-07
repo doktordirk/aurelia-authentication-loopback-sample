@@ -1,38 +1,44 @@
 import {inject} from 'aurelia-framework';
 import {AuthService} from 'spoonx/aurelia-auth';
+import {Notify} from 'modules/notify';
 
-@inject(AuthService)
+@inject(AuthService, Notify)
 export class Profile {
- heading = 'Profile';
+  heading = 'Profile';
 
- displayName = '';
- email  = '';
- password    = '';
+  displayName = '';
+  email = '';
+  password = '';
 
- constructor(auth) {
-   this.auth = auth;
-   this.profile = null;
- }
+  constructor(auth, notify) {
+    this.auth = auth;
+    this.notify = notify;
+    this.profile = null;
+  }
 
- activate() {
-   return this.auth.getMe()
-  .then(data => this.profile = data);
- }
+  activate() {
+    return this.auth.getMe()
+      .then(data => this.profile = data)
+      .catch(error => this.notify.error(error));
+  }
 
- update() {
-   return this.auth.updateMe(this.profile);
- }
+  update() {
+    return this.auth.updateMe(this.profile)
+      .then(response=>this.notify.success('Updated'))
+      .catch(error => this.notify.error(error));
+  }
 
- link(provider) {
-   return this.auth.authenticate(provider, true, null)
-  .then(response => this.auth.getMe())
-  .then(data => this.profile = data)
-  .catch(err => console.error('link error', err));
- }
+  link(provider) {
+    return this.auth.authenticate(provider, true, null)
+      .then(response => this.auth.getMe())
+      .then(data => this.profile = data)
+      .catch(error => console.error(error));
+  }
 
- unlink(provider) {
-   return this.auth.unlink(provider)
-  .then(() => this.auth.getMe())
-  .then(data => this.profile = data);
- }
+  unlink(provider) {
+    return this.auth.unlink(provider)
+      .then(() => this.auth.getMe())
+      .then(data => this.profile = data)
+      .catch(error => this.notify.error(error));
+  }
 }
