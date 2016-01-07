@@ -1,5 +1,5 @@
 # Aurelia-auth-loopback-sample
-This is a basic sample for an [Aurelia](http://aurelia.io/) client using [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized access to a [Strongloop](http://loopback.io/) loopback api server based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/) and [aurelia-auth-sample](https://github.com/paulvanbladel/aurelia-auth-sample/)
+This is (goint to be) a skeleton for an [Aurelia](http://aurelia.io/) client using [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized access to a [Strongloop](http://loopback.io/) loopback api server based on paul van bladel's [aurelia-loopback-sample](https://github.com/paulvanbladel/aurelia-loopback-sample/) and [aurelia-auth-sample](https://github.com/paulvanbladel/aurelia-auth-sample/)
 
 [loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer) is used to handle third-party authorization on the server side.
 
@@ -35,7 +35,7 @@ Email verification after signup is enabled in `server/model-config.json` ->  `"u
 Currently included is gmail as email provider. Other options like sendMail are possible using Loopback components.
 
 ##### Gmail
-For gmail to work you'll need to allow less secure apps to connect. You can do that with [Gmail settings for less secure apps](https://www.google.com/settings/security/lesssecureapps).
+For loopback to send mails vie gmail, you may (certainly) need to [“Allow Less Secure Apps”](https://www.google.com/settings/security/lesssecureapps) in your gmail account. You also may need to [“Allow access to your Google account”](https://accounts.google.com/DisplayUnlockCaptcha).
 
 Copy `/server/datasources.local.json.bak` to `/server/datasources.local.json` and add gmail username and password.
 
@@ -59,10 +59,11 @@ user hasMany customers
 customer belongsTo user
 ```
 Unauthorized users only can list the customers. Authorized users additionally can manage their own customers. See the models in common/models.
-
-By default loopback uses a session token for authorization. This basic version does not use third-party authorization.
+Users can signup & login with verified emails or third-party providers (facebook). After signup with email, a verification emails is send. Users can also request an email to reset their password.
 
 A local file is used as database. Have a peek at `mydata.json` to gain some insight.
+
+By default loopback uses session token for authorization.
 
 #### Client
 An aurelia client app with authorized pages for user profile and customer management and unauthorized pages for login, signup and customer listing.
@@ -199,7 +200,7 @@ Define the `relations` of the `user`. Here `hasMany` `customers` identified by `
   }
 },
 ```
-Define the access to the rest api methods. With inheriting the build-in model `User` the common permission for accounts are already set. We need to allow the user access to their `costomers` though. For simplicity, we all just *=all for `$owner`. As that doesn't include remoteMethods we need to add ACl for those (I haven't checked out facebook-get yet. I'll just added it for future use.).
+Define the access to the rest api methods. With inheriting the build-in model `User` the common permission for accounts are already set. We need to allow the user access to their `costomers` though. For simplicity, we all just *=all crud for `$owner`. As that doesn't include remoteMethods we need to add ACl for those (I haven't checked out facebook-get yet. I'll just added it for future use.).
 ```
 "acls": [
   {
@@ -207,6 +208,13 @@ Define the access to the rest api methods. With inheriting the build-in model `U
     "principalType": "ROLE",
     "principalId": "$owner",
     "permission": "ALLOW"
+  },
+  {
+    "accessType": "EXECUTE",
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW",
+    "property": "set-password"
   },
   {
     "accessType": "EXECUTE",
@@ -234,7 +242,11 @@ Define the access to the rest api methods. With inheriting the build-in model `U
 ##### common/models/user.js
 Adding hooks and additional remoteMethod for our user model.
 
-We added `User.afterRemote('create',..)` to send a verification email after signup. The email contains a link with a verification token to our api server which will redirect to our client if successful.
+We added the hook `User.afterRemote('create',..)` to send a verification email after signup. The email contains a link with a verification token to our api server which will redirect to our client if successful.
+
+Loopback has User model has a build in reset password path. With User.on('resetPasswordRequest', ..) we react to the emitted resetPasswordRequest event to email a short-term token to the user for setting a new password.
+
+The remoteMethod User.setPassword allows users to post their password.
 
 The remoteMethod 'unlink' adds a third-party provider unlink route GET /:id/unlink/:provider which just deletes the providers userid from a user.
 
@@ -274,7 +286,8 @@ Uses aurelia-api for CRUD. Since we set `httpInterceptor:true` in `authConfig.js
 spoonx/aurelia-api does not provide multiple endpoints yet. Thus switching endpoints is cumbersome and currently always send your token.
 
 ## Plans
+- Notifications/UI feedback
 - Better scripts
-- Email verification
-- Password reset
+- Email verification per pasting token
 - Simple multiple endpoints using hopefully coming [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) improvements
+- Email templates

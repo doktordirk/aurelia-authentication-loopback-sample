@@ -24,7 +24,9 @@ export default class {
       { route: 'logout',      name: 'logout',     moduleId: './modules/auth/logout',  nav: false, title: 'Logout', auth: true },
       { route: 'profile',     name: 'profile',    moduleId: './modules/auth/profile', nav: false, title: 'Profile', auth: true },
       { route: 'confirm',     name: 'confirm',    moduleId: './modules/auth/confirm', nav: false, title: 'Confirm' },
-      { route: 'confirmed',   name: 'confirmed',  moduleId: './modules/auth/confirmed', nav: false, title: 'Confirmed' }
+      { route: 'confirmed',   name: 'confirmed',  moduleId: './modules/auth/confirmed', nav: false, title: 'Confirmed' },
+      { route: 'request-password-reset', moduleId: './modules/auth/request-password-reset', nav: false, title: 'Request password reset' },
+      { route: 'reset-password',         moduleId: './modules/auth/reset-password',   nav: false, title: 'Reset password' }
      ]);
    };
 
