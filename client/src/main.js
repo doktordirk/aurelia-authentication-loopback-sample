@@ -13,6 +13,9 @@ export function configure(aurelia) {
     .plugin('spoonx/aurelia-auth', config => {
       config.configure(authConfig);
     })
+    .plugin('aurelia-i18n', instance => {
+      instance.setup({});
+    })
     .plugin('aurelia-animator-css');
 
   aurelia.start().then(a => a.setRoot());
