@@ -11,14 +11,15 @@ var error = function(msg, statusCode, code) {
 
 module.exports = function(User) {
 
+
   // send verification email after registration
   // User.afterRemote('create',..) is triggered
   // after the User's remoteMethod 'create' was called
   User.afterRemote('create', function(context, user, next) {
-
-
-    // Only send verification email if required by config.
-    if (modelConfig.options.emailVerificationRequired) {
+   
+       // Only send verification email if required by config.
+    if (modelConfig.user.options.emailVerificationRequired) {
+   
       // setting up email options
       var options = Object.assign(emailConfig.confirm, {
         to: user.email,
