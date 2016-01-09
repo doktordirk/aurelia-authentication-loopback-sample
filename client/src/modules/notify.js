@@ -18,8 +18,7 @@ export class Notify {
 
     if (typeof(_error) === 'string') {
       message = _error;
-    }
-    else if (_error instanceof Response) {
+    } else if (_error instanceof Response) {
       if (_error.status === 404) {
         message = 'The requested resource does not exist';
       } else {

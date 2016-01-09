@@ -1,3 +1,18 @@
+<a name"1.2.4"></a>
+### 1.2.4 (2016-01-09)
+
+
+#### Bug Fixes
+
+* **notification:** I18n initialization. ([64f16b87](http://github.com/aurelia/skeleton-navigation/commit/64f16b87))
+* **notify:** Display strings unchanged ([accef304](http://github.com/aurelia/skeleton-navigation/commit/accef304))
+
+
+#### Features
+
+* **notify:** Notifications ([bc2b084b](http://github.com/aurelia/skeleton-navigation/commit/bc2b084b))
+
+
 <a name"1.2.3"></a>
 ### 1.2.3 (2016-01-07)
 
