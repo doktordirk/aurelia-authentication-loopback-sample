@@ -16,7 +16,10 @@ export class Notify {
     console.error(_error);
     let message = 'Error: ' + JSON.stringify(_error);
 
-    if (_error instanceof Response) {
+    if (typeof(_error) === 'string') {
+      message = _error;
+    }
+    else if (_error instanceof Response) {
       if (_error.status === 404) {
         message = 'The requested resource does not exist';
       } else {
@@ -35,6 +38,7 @@ export class Notify {
         message = JSON.stringify(_error.error);
       }
     }
+
     this.notification.error(message);
   }
 }
