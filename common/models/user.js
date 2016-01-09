@@ -17,7 +17,7 @@ module.exports = function(User) {
   // after the User's remoteMethod 'create' was called
   User.afterRemote('create', function(context, user, next) {
    
-       // Only send verification email if required by config.
+    // Only send verification email if required by config.
     if (modelConfig.user.options.emailVerificationRequired) {
    
       // setting up email options
