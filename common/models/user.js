@@ -1,5 +1,6 @@
 var emailConfig = require('../../server/email-config.json');
 var config = require('../../server/config.json');
+var modelConfig = require('../../server/model-config.json');
 
 var error = function(msg, statusCode, code) {
   var err = new Error(msg);
@@ -10,30 +11,36 @@ var error = function(msg, statusCode, code) {
 
 module.exports = function(User) {
 
+
   // send verification email after registration
   // User.afterRemote('create',..) is triggered
   // after the User's remoteMethod 'create' was called
   User.afterRemote('create', function(context, user, next) {
-    // setting up email options
-    var options = Object.assign(emailConfig.confirm, {
-      to: user.email,
-      user: user
-    });
-    options.redirect = encodeURIComponent(config.client + options.redirect);
+   
+    // Only send verification email if required by config.
+    if (modelConfig.user.options.emailVerificationRequired) {
+   
+      // setting up email options
+      var options = Object.assign(emailConfig.confirm, {
+        to: user.email,
+        user: user
+      });
+      options.redirect = encodeURIComponent(config.client + options.redirect);
 
-    // send email
-    user.verify(options, function(err, response) {
-      if (err) {
-        console.error('> email sent error:', err);
-        user.destroy(function() {
-          next(err);
-        });
-      }
-      else {
-        console.log('> sending verification email to:', user.email);
-        next();
-      }
-    });
+      // send email
+      user.verify(options, function(err, response) {
+        if (err) {
+          console.error('> email sent error:', err);
+          user.destroy(function() {
+            next(err);
+          });
+        }
+        else {
+          console.log('> sending verification email to:', user.email);
+          next();
+        }
+      });
+    }
   });
 
   // send password reset link when requested
