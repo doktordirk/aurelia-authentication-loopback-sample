@@ -1,3 +1,5 @@
+try { 
+
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
@@ -31,3 +33,7 @@ app.use(loopback.token({
     model: app.models.accessToken,
     currentUserLiteral: 'me'
 }));
+
+} catch(e){
+  console.log('server.js error: ',e)
+}

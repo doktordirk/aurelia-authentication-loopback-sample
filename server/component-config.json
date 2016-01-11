@@ -4,7 +4,7 @@
   },
   "loopback-component-satellizer": {
 	  "facebook": {
-	    "model": "user",
+	    "model": "${userModel}",
 	    "version": "v2.5",
 	    "fields": ["email","name","last_name","first_name","gender","birthday"],
 	    "uri": "/facebook",

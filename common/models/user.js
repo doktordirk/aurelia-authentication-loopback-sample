@@ -11,7 +11,6 @@ var error = function(msg, statusCode, code) {
 
 module.exports = function(User) {
 
-
   // send verification email after registration
   // User.afterRemote('create',..) is triggered
   // after the User's remoteMethod 'create' was called

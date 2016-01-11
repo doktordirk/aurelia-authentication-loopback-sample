@@ -1,26 +1,30 @@
 {
   "ids": {
-    "user": 3,
+    "user": 4,
     "AccessToken": 1,
     "ACL": 1,
-    "RoleMapping": 1,
-    "Role": 1,
+    "RoleMapping": 2,
+    "Role": 2,
     "customer": 4
   },
   "models": {
     "user": {
-      "1": "{\"displayName\":\"User Name\",\"password\":\"$2a$10$V33u8ft9e9IsRFIVdwcBTeHTHxf1joCVaq6.jun7sJT1rBwDXVFtO\",\"email\":\"user@example.com\",\"id\":1,\"emailVerified\":true}",
-      "2": "{\"displayName\":\"Another User\",\"password\":\"$2a$10$gepMIWxXXcm2BAq4OA/e6eKPEQ.ShITMXxVqpF4HRO2tb4U3nNj36\",\"email\":\"another@example.com\",\"id\":2,\"emailVerified\":true}"
+      "1": "{\"displayName\":\"admin\",\"password\":\"$2a$10$OhDBcz1PqpYvRvVOZ2juveEB.JV.WNDL9FwfPZVOXVIQqMrAjtkrq\",\"email\":\"admin@example.com\",\"created\":\"2016-01-11T16:46:54.972Z\",\"id\":1,\"emailVerified\":true}",
+      "2": "{\"displayName\":\"User Name\",\"password\":\"$2a$10$V33u8ft9e9IsRFIVdwcBTeHTHxf1joCVaq6.jun7sJT1rBwDXVFtO\",\"email\":\"user@example.com\",\"id\":2,\"emailVerified\":true}",
+      "3": "{\"displayName\":\"Another User\",\"password\":\"$2a$10$gepMIWxXXcm2BAq4OA/e6eKPEQ.ShITMXxVqpF4HRO2tb4U3nNj36\",\"email\":\"another@example.com\",\"id\":3,\"emailVerified\":true}"
     },
-    "AccessToken": {
-    },
+    "AccessToken": {},
     "ACL": {},
-    "RoleMapping": {},
-    "Role": {},
+    "RoleMapping": {
+      "1": "{\"principalType\":\"USER\",\"principalId\":\"1\",\"roleId\":1,\"id\":1}"
+    },
+    "Role": {
+      "1": "{\"name\":\"admin\",\"description\":\"admin\",\"created\":\"2016-01-11T18:00:06.464Z\",\"modified\":\"2016-01-11T18:00:06.464Z\",\"id\":1}"
+    },
     "customer": {
-      "1": "{\"firstName\":\"Paul\",\"lastName\":\"van Blandel\",\"userId\":1,\"id\":1}",
-      "2": "{\"firstName\":\"Doktor\",\"lastName\":\"Dirk\",\"userId\":1,\"id\":2}",
-      "3": "{\"firstName\":\"Someone\",\"lastName\":\"ElseMadeThis\",\"userId\":2,\"id\":3}"
+      "1": "{\"firstName\":\"Paul\",\"lastName\":\"van Blandel\",\"userId\":2,\"id\":1}",
+      "2": "{\"firstName\":\"Doktor\",\"lastName\":\"Dirk\",\"userId\":2,\"id\":2}",
+      "3": "{\"firstName\":\"Someone\",\"lastName\":\"ElseMadeThis\",\"userId\":3,\"id\":3}"
     }
   }
 }
