@@ -1,16 +1,18 @@
 import {inject} from 'aurelia-framework';
 import {Rest} from 'spoonx/aurelia-api';
 import {Router} from 'aurelia-router';
+import {Notify} from 'modules/notify';
 
-@inject(Rest, Router)
+@inject(Rest, Router, Notify)
 export class RequestPasswordReset {
   requestPath = 'users/reset'
   heading = 'Passord reset request';
   email = ''
 
-  constructor(rest, router) {
+  constructor(rest, router, notify) {
     this.rest = rest;
     this.router = router;
+    this.notify = notify;
   }
 
   request() {
@@ -18,11 +20,7 @@ export class RequestPasswordReset {
     .then( () => {
       this.router.navigate('confirm');
     })
-    .catch(response => {
-      response.json().then(err=>{
-        console.error('Request failure', err);
-      });
-    });
+   .catch(error => this.notify.error(error));
     return request;
   }
 }

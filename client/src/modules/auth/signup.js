@@ -1,11 +1,14 @@
 import {inject} from 'aurelia-framework';
 import {AuthService} from 'spoonx/aurelia-auth';
+import {Notify} from 'modules/notify';
 
-@inject(AuthService)
+@inject(AuthService, Notify)
 export class Signup {
- constructor(auth) {
+ constructor(auth, notify) {
    this.auth = auth;
+   this.notify = notify;
  }
+
  heading = 'Sign Up';
 
  email=''
@@ -18,11 +21,9 @@ export class Signup {
      email: this.email,
      password: this.password
    })
-   .then( response => {
+   .then(response=>{
      console.log('signed up', response);
    })
-   .catch( response => {
-     console.error('signed up error', response);
-   });
+   .catch(error => this.notify.error(error));
  }
 }

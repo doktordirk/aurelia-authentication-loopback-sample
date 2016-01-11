@@ -14,30 +14,34 @@ export class Notify {
 
   error(_error) {
     console.error(_error);
-    let message = 'Error: ' + JSON.stringify(_error);
+
+    this.formatError(_error)
+      .then(message=>this.notification.error(message));
+  }
+
+  formatError(_error) {
+    let message = _error;
 
     if (typeof(_error) === 'string') {
-      message = _error;
-    } else if (_error instanceof Response) {
-      if (_error.status === 404) {
-        message = 'The requested resource does not exist';
-      } else {
-        message = 'Server response: ' + _error.statusText;
-      }
-    } else if (_error instanceof Error) {
-      if (_error.message === 'Failed to fetch') {
+      if (_error === 'Failed to fetch') {
         message = 'No connection to the server';
-      } else {
-        message = _error.message;
       }
+    } else if (_error.message) {
+      return this.formatError(_error.message);
     } else if (_error.error) {
-      if ( typeof(_error.error) === 'String' ) {
-        message = _error.error;
-      } else {
-        message = JSON.stringify(_error.error);
-      }
+      return this.formatError(_error.error);
+    } else if (_error instanceof Response) {
+      return _error.json()
+        .then(err=>this.formatError(err))
+        .catch(err=> {
+            if (_error.status === 404) {
+            message = 'The requested resource does not exist';
+          } else {
+            message = 'Server response: ' + _error.statusText;
+          }
+        });
     }
 
-    this.notification.error(message);
+    return Promise.resolve(message);
   }
 }
