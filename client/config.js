@@ -19,7 +19,7 @@ System.config({
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.8",
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-beta.1.0.1",
-    "aurelia-i18n": "npm:aurelia-i18n@0.4.5",
+    "aurelia-i18n": "npm:aurelia-i18n@0.4.6",
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0-beta.1.0.2",
     "aurelia-logging-console": "npm:aurelia-logging-console@1.0.0-beta.1",
     "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.0.1",
@@ -66,7 +66,7 @@ System.config({
     },
     "github:spoonx/aurelia-notification@master": {
       "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.8",
-      "aurelia-i18n": "npm:aurelia-i18n@0.4.5",
+      "aurelia-i18n": "npm:aurelia-i18n@0.4.6",
       "wavded/humane-js": "github:wavded/humane-js@3.2.2"
     },
     "github:twbs/bootstrap@3.3.6": {
@@ -131,7 +131,7 @@ System.config({
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.0.2",
       "core-js": "npm:core-js@1.2.6"
     },
-    "npm:aurelia-i18n@0.4.5": {
+    "npm:aurelia-i18n@0.4.6": {
       "Intl.js": "github:andyearnshaw/Intl.js@0.1.4",
       "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.0.5",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.0.1",
