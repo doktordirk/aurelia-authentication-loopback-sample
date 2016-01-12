@@ -124,10 +124,40 @@ module.exports = function(User) {
   User.remoteMethod('unlink', {
     description: 'Unlink third-party login provider.',
     accepts: [
-      {arg: 'id', type: 'string', required: true},
-      {arg: 'provider', type: 'string', required: true},
+      {arg: 'id', type: 'number', required: true, description:'UserId'},
+      {arg: 'provider', type: 'string', required: true, description:'Provider name'},
     ],
-    returns: {arg: 'success', type: 'boolean'},
+    returns: {arg: 'success', type: 'boolean', description:'200',notes:'ffff'},
     http: {path:'/:id/unlink/:provider', verb: 'get'}
+  });
+
+  // add requested includes to login response
+  User.remoteMethod('login', {
+    description: 'Login with credentials.',
+    accepts: [
+      {arg: 'credentials', type: 'object', required: true, description:'Credentials and includes'}
+    ]
+  });
+  User.afterRemote('login', function(context, remoteMethodOutput, next) {
+    var userId = remoteMethodOutput.userId;
+    // requested include params is in the body/credentials for our case
+    var include = context.args.credentials.include;
+
+    if (include) {
+      include = include.trim();
+      include = include[0] === "[" ? include : '["'+ include + '"]';
+      include = JSON.parse(include); 
+
+      User.findById(userId, {include: include}, function(err, user){
+        if (user) {
+          include.map(function(related) { 
+            remoteMethodOutput[related] = user[related]();
+          })
+        }
+        next();
+      });
+    } else {
+      next();
+    }
   });
 };

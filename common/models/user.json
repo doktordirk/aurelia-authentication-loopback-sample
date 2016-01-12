@@ -1,7 +1,6 @@
 {
   "name": "user",
   "base": "User",
-  "idInjection": true,
   "options": {
     "validateUpsert": false
   },
@@ -28,6 +27,12 @@
   },
   "validations": [],
   "relations": {
+    "roles": {
+      "type": "hasMany",
+      "model": "role",
+      "through": "RoleMapping",
+      "foreignKey": "principalId"
+    },
     "customers": {
       "type": "hasMany",
       "model": "customer",
