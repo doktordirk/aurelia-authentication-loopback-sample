@@ -47,6 +47,9 @@ Sets up out components. `"model": "user"` adds the facebook methods to our accou
 ##### server/email-config.json
 Configurations for transactional emails.
 
+##### server/boot/create-admin.js
+In server/boot/ are the loopback boot scripts. create-admin.js add the Role `admin` and creates a user with that role.
+
 ##### common/models/customer.json
 Here we define our `customer` model.
 We use/inherit the build-in `PersistedModel`.
@@ -114,9 +117,15 @@ Define some additional `properties` of the `user`. Some we already inherited wit
 ```
 "properties": ..
 ```
-Define the `relations` of the `user`. Here `hasMany` `customers` identified by `userId`.
+Define the `relations` of the `user`. Here `hasMany` `customers` identified by `userId` and `hasMany` `Roles` through `RoleMapping` identified by `principalId=userId`.
 ```
 "relations": {
+  "Roles": {
+    "type": "hasMany",
+    "model": "Role",
+    "through": "RoleMapping",
+    "foreignKey": "principalId"
+  },
   "customers": {
     "type": "hasMany",
     "model": "customer",
@@ -128,15 +137,9 @@ Define the `relations` of the `user`. Here `hasMany` `customers` identified by `
   }
 },
 ```
-Define the access to the rest api methods. With inheriting the build-in model `User` the common permission for accounts are already set. We need to allow the user access to their `costomers` though. For simplicity, we all just *=all crud for `$owner`. As that doesn't include remoteMethods we need to add ACl for those (I haven't checked out facebook-get yet. I'll just added it for future use.).
+Define the access to the rest api methods. With inheriting the build-in model `User` the common permission for accounts are already set. We need to allow the user access to their `customers` though. We allow access to related models with `__methodName__relatedModelNamePlural` (https://docs.strongloop.com/display/public/LB/Accessing+related+models). As that doesn't include remoteMethods we need to add ACl for those (I haven't checked out facebook-get yet. I'll just added it for future use.). Finally, we allow the admin everything.
 ```
 "acls": [
-  {
-    "accessType": "*",
-    "principalType": "ROLE",
-    "principalId": "$owner",
-    "permission": "ALLOW"
-  },
   {
     "accessType": "EXECUTE",
     "principalType": "ROLE",
@@ -165,6 +168,32 @@ Define the access to the rest api methods. With inheriting the build-in model `U
     "permission": "ALLOW",
     "property": "facebook-get"
   }  
+    {
+     "principalType": "ROLE",
+     "principalId": "$everyone",
+     "permission": "ALLOW",
+     "property": "__count__customers"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$authenticated",
+     "permission": "ALLOW",
+     "property": "__create__customers"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$owner",
+     "permission": "ALLOW",
+     "property": "__delete__customers"
+    },
+    ...
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "*"
+    }
 ],
 ```
 ##### common/models/user.js

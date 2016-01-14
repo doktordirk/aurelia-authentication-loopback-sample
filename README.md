@@ -6,7 +6,7 @@ This is (goint to be) a skeleton for an [Aurelia](http://aurelia.io/) client usi
 Comments on aurelia gitter and push requests welcome.
 ..
 
-This version uses [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) and [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized rest api access.
+This version uses [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) and [spoonx/aurelia-auth](https://github.com/SpoonX/aurelia-auth) for authorized rest api access and has an admin role included.
 
 ## Installation instructions
 ```
@@ -35,9 +35,14 @@ Email verification after signup is enabled in `server/model-config.json` ->  `"u
 Currently included is gmail as email provider. Other options like sendMail are possible using Loopback components.
 
 ##### Gmail
-For loopback to send mails vie gmail, you may (certainly) need to [“Allow Less Secure Apps”](https://www.google.com/settings/security/lesssecureapps) in your gmail account. You also may need to [“Allow access to your Google account”](https://accounts.google.com/DisplayUnlockCaptcha).
+For loopback to send mails via gmail, you may (certainly) need to [“Allow Less Secure Apps”](https://www.google.com/settings/security/lesssecureapps) in your gmail account. You also may need to [“Allow access to your Google account”](https://accounts.google.com/DisplayUnlockCaptcha).
 
-Copy `/server/datasources.local.json.bak` to `/server/datasources.local.json` and add gmail username and password.
+Copy `/server/datasources.local.json.template` to `/server/datasources.local.json` and add gmail username and password.
+
+#### Admin role
+Copy `/server/config.local.json.template` to `/server/config.local.json` and set the admins email and password.
+
+Currently the admin has nearly unlimited permission.
 
 ### Optional:
 Install loopback-component-explorer with `npm install loopback-component-explorer --save-dev` to use the loopback api explorer (recommended, free registration needed).
@@ -82,6 +87,7 @@ More inforemation about the loopback server and the aurelia client code are in t
 spoonx/aurelia-api does not provide multiple endpoints yet. Thus switching endpoints is cumbersome and currently always send your token.
 
 ## Plans
+- JWT
 - Better scripts
 - Email verification per pasting token
 - Simple multiple endpoints using hopefully coming [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) improvements
