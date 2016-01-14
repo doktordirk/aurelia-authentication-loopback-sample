@@ -4,8 +4,8 @@
     "AccessToken": 1,
     "ACL": 1,
     "RoleMapping": 2,
-    "Role": 2,
-    "customer": 4
+    "customer": 5,
+    "Role": 2
   },
   "models": {
     "user": {
@@ -24,7 +24,8 @@
     "customer": {
       "1": "{\"firstName\":\"Paul\",\"lastName\":\"van Blandel\",\"userId\":2,\"id\":1}",
       "2": "{\"firstName\":\"Doktor\",\"lastName\":\"Dirk\",\"userId\":2,\"id\":2}",
-      "3": "{\"firstName\":\"Someone\",\"lastName\":\"ElseMadeThis\",\"userId\":3,\"id\":3}"
+      "3": "{\"firstName\":\"Someone\",\"lastName\":\"ElseMadeThis\",\"userId\":3,\"id\":3}",
+      "4": "{\"firstName\":\"Admin\",\"lastName\":\"Customer\",\"userId\":1,\"id\":4}"
     }
   }
 }

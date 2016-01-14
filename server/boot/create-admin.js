@@ -1,4 +1,4 @@
-/* 99.9% copied from https://github.com/BoLaMN/loopback-component-admin */
+/* 99.9% copied from https://github.com/BoLaMN/loopback-component-admin/blob/master/dist/create-user.js */
 
 var options = require('../config').options;
 
@@ -84,7 +84,7 @@ createDefaultAdmin = function(User, RoleMapping, ACL, roleId) {
       principalType: 'ROLE',
       principalId: options.roleAdmin.name
     });
-    ACL.create({
+/*    ACL.create({
       model: 'AccessToken',
       property: '*',
       accessType: '*',

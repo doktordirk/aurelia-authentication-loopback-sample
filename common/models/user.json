@@ -45,13 +45,6 @@
   },
   "acls": [
     {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY",
-      "property": "roles"
-    },
-    {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
       "principalId": "$owner",
@@ -120,6 +113,13 @@
      "principalId": "$owner",
      "permission": "ALLOW",
      "property": "__updateById__customers"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "*"
     }
   ],
   "methods": {}
