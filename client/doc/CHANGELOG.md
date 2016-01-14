@@ -1,3 +1,22 @@
+<a name"1.2.5"></a>
+### 1.2.5 (2016-01-14)
+
+
+#### Bug Fixes
+
+* **Role:** back to build-in Role model ([18767048](http://github.com/aurelia/skeleton-navigation/commit/18767048))
+* **client:** dependency update ([e464bdbf](http://github.com/aurelia/skeleton-navigation/commit/e464bdbf))
+* **config.json:** Configure admin template missing ([54696b6a](http://github.com/aurelia/skeleton-navigation/commit/54696b6a))
+* **user.json:** set proper related model ACL ([97fead46](http://github.com/aurelia/skeleton-navigation/commit/97fead46))
+
+
+#### Features
+
+* **client:** admin page ([2546d7d8](http://github.com/aurelia/skeleton-navigation/commit/2546d7d8))
+* **create-admin:** admin and admin role ([f347e0c4](http://github.com/aurelia/skeleton-navigation/commit/f347e0c4))
+* **notify:** More feedback ([5edf515e](http://github.com/aurelia/skeleton-navigation/commit/5edf515e))
+
+
 <a name"1.2.4"></a>
 ### 1.2.4 (2016-01-09)
 

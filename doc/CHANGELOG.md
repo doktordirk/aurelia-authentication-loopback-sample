@@ -1,3 +1,22 @@
+<a name"1.2.5"></a>
+### 1.2.5 (2016-01-14)
+
+
+#### Bug Fixes
+
+* **Role:** back to build-in Role model ([18767048](git+https://github.com/doktordirk/aurelia-auth-loopback-sample/commit/18767048))
+* **client:** dependency update ([e464bdbf](git+https://github.com/doktordirk/aurelia-auth-loopback-sample/commit/e464bdbf))
+* **config.json:** Configure admin template missing ([54696b6a](git+https://github.com/doktordirk/aurelia-auth-loopback-sample/commit/54696b6a))
+* **user.json:** set proper related model ACL ([97fead46](git+https://github.com/doktordirk/aurelia-auth-loopback-sample/commit/97fead46))
+
+
+#### Features
+
+* **client:** admin page ([2546d7d8](git+https://github.com/doktordirk/aurelia-auth-loopback-sample/commit/2546d7d8))
+* **create-admin:** admin and admin role ([f347e0c4](git+https://github.com/doktordirk/aurelia-auth-loopback-sample/commit/f347e0c4))
+* **notify:** More feedback ([5edf515e](git+https://github.com/doktordirk/aurelia-auth-loopback-sample/commit/5edf515e))
+
+
 <a name"1.2.4"></a>
 ### 1.2.4 (2016-01-09)
 
