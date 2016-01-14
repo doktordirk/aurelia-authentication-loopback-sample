@@ -27,9 +27,9 @@
   },
   "validations": [],
   "relations": {
-    "roles": {
+    "Roles": {
       "type": "hasMany",
-      "model": "role",
+      "model": "Role",
       "through": "RoleMapping",
       "foreignKey": "principalId"
     },
@@ -47,14 +47,9 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW"
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "roles"
     },
     {
       "accessType": "EXECUTE",
@@ -83,6 +78,48 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "facebook-get"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$everyone",
+     "permission": "ALLOW",
+     "property": "__count__customers"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$authenticated",
+     "permission": "ALLOW",
+     "property": "__create__customers"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$owner",
+     "permission": "ALLOW",
+     "property": "__delete__customers"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$owner",
+     "permission": "ALLOW",
+     "property": "__destroyById__customers"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$everyone",
+     "permission": "ALLOW",
+     "property": "__findById__customers"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$everyone",
+     "permission": "ALLOW",
+     "property": "__get__customers"
+    },
+    {
+     "principalType": "ROLE",
+     "principalId": "$owner",
+     "permission": "ALLOW",
+     "property": "__updateById__customers"
     }
   ],
   "methods": {}
