@@ -56,7 +56,7 @@ createAdminRole = function(Role, callback) {
 
 createDefaultAdmin = function(User, RoleMapping, ACL, roleId) {
   var userAdmin = options.userAdmin;
-  userAdmin.created = new Date;
+  userAdmin.created = new Date();
   User.create(userAdmin, function(error, user) {
     if (error) {
       console.log('Error creating \'admin\' user.');

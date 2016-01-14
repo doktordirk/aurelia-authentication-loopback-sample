@@ -6,6 +6,7 @@
 - /src/modules : single main views. particularly the customers view for unauthorized users
 - /src/modules/auth : user authentification files eg signup, login ..
 - /src/modules/customer : customer management for authenticated users
+- /src/modules/user : user management for admin users
 
 ##### main.js
 setup aurelia-api with a baseUrl and configure aurelia-auth.
@@ -24,19 +25,17 @@ providers: {
 basic config for the fetch client for aurelia-auth-sample.
 
 ##### app.router.config.js
-adding the property `auth` to the routes and adding the pipeline step `AuthorizeStep` from aurelia-auth. This will hide those routes for unauthorized users.
+adding the property `auth` to the routes and adding the pipeline step `AuthorizeStep` from aurelia-auth. This will hide those routes for unauthorized users. Adding settings.admin and AdminStep hides admin pages for users without that role. 
 
 ##### auth/*
-Uses the login/signup methods of aurelia-auth-sample.
+Uses the login/signup methods of aurelia-auth-sample with some additional authorization and role releated features.
 
-##### customers/*
+##### customer/*
 Uses aurelia-api for CRUD. Since we set `httpInterceptor:true` in `authConfig.js`, the authorization token is added to all request. Users can only edit their own customers as defined in `/common/models/user.json`.
+
+##### user/*
+Admin pages. Users with the admin role can edit users as defined in `/common/models/user.json`.
 
 ## Limitations
 spoonx/aurelia-api does not provide multiple endpoints yet. Thus switching endpoints is cumbersome and currently always send your token.
-
-## Plans
-- Better scripts
-- Email verification per pasting token
-- Simple multiple endpoints using hopefully coming [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) improvements
-- Email templates
+The admin role has too much permissions, including deleting ther admins.

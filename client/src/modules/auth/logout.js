@@ -1,25 +1,26 @@
+import {User} from './user';
 import {inject} from 'aurelia-framework';
 import {AuthService} from 'spoonx/aurelia-auth';
 import {Rest} from 'spoonx/aurelia-api';
+import {Notify} from 'modules/notify';
 
-@inject(AuthService, Rest)
+@inject(User, AuthService, Rest, Notify)
 export class Logout {
-  constructor(authService, rest) {
-    this.authService = authService;
+  constructor(user, auth, rest, notify) {
+    this.user = user;
+    this.auth = auth;
     this.rest = rest;
+    this.notify = notify;
   }
 
   activate() {
     // post logout to loopback server. deletes token on server
-    this.rest.post('users/logout').then(response=>{
-      console.log('ok logged out', response);
-    })
-    .catch(err=>{
-      console.error('error logged out', err);
-    })
-    .then(()=>{
+    this.rest.post('users/logout')
+    .catch(error => this.notify.error(error))
+    .then(() => {
       // delete local token and redirect in any case
-      this.authService.logout('#/login');
+      this.user.removeRoles();
+      this.auth.logout('#/login');
     });
   }
 }

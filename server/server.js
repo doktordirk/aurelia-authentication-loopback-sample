@@ -35,5 +35,5 @@ app.use(loopback.token({
 }));
 
 } catch(e){
-  console.log('server.js error: ',e)
+  console.log('server.js error: ', e);
 }

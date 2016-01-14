@@ -34,7 +34,7 @@ export class Notify {
       return _error.json()
         .then(err=>this.formatError(err))
         .catch(err=> {
-            if (_error.status === 404) {
+          if (_error.status === 404) {
             message = 'The requested resource does not exist';
           } else {
             message = 'Server response: ' + _error.statusText;
