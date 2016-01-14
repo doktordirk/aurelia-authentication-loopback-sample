@@ -1,0 +1,15 @@
+{
+  "options" : {
+    "userAdmin" : {
+      "email": "admin@example.com",
+      "displayName": "admin",
+      "password": "password",
+      "id": 1,
+      "emailVerified": true
+    },
+    "roleAdmin" :{
+      "name": "admin",
+      "description": "Administrator"
+    }
+  }
+}
