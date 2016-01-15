@@ -39,6 +39,7 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-satellizer": "^2.0.1",
     "loopback-datasource-juggler": "^2.44.0",
+    "morgan": "^1.6.1",
     "serve-favicon": "^2.0.1"
   },
   "optionalDependencies": {
