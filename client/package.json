@@ -76,8 +76,8 @@
       "bootstrap": "github:twbs/bootstrap@^3.3.5",
       "fetch": "github:github/fetch@^0.10.1",
       "font-awesome": "npm:font-awesome@^4.5.0",
-      "spoonx/aurelia-api": "github:spoonx/aurelia-api@^1.2.2",
-      "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@^0.12.2",
+      "spoonx/aurelia-api": "github:spoonx/aurelia-api@^2.0.2",
+      "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@^0.13.0",
       "spoonx/aurelia-notification": "github:spoonx/aurelia-notification@master",
       "text": "github:systemjs/plugin-text@^0.0.3",
       "wavded/humane-js": "github:wavded/humane-js@^3.2.2"

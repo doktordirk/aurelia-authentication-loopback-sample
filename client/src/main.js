@@ -8,7 +8,10 @@ export function configure(aurelia) {
     .standardConfiguration()
     .developmentLogging() // enable debug logging
     .plugin('spoonx/aurelia-api', config => {
-      config.useStandardConfiguration().withBaseUrl('http://localhost:3000/api/');
+      config
+        .registerEndpoint('api', 'http://localhost:3000/api/')
+        .registerEndpoint('auth', 'http://localhost:3000/api/')
+        .setDefaultEndpoint('api');
     })
     .plugin('spoonx/aurelia-auth', config => {
       config.configure(authConfig);

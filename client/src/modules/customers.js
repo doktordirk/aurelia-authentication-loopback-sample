@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework';
-import {Rest} from 'spoonx/aurelia-api';
+import {Endpoint} from 'spoonx/aurelia-api';
 
-@inject(Rest)
+@inject(Endpoint.of())
 export class Customers {
   heading = 'Customers';
   customers = [];
