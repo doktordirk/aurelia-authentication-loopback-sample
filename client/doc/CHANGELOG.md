@@ -1,3 +1,13 @@
+<a name"1.3.1"></a>
+### 1.3.1 (2016-01-23)
+
+
+#### Bug Fixes
+
+* **client:** change remaining Rest to Endpoint ([fd5e0f87](http://github.com/aurelia/skeleton-navigation/commit/fd5e0f87))
+* **project:** upgraded bugged aurelia-auth ([0719a924](http://github.com/aurelia/skeleton-navigation/commit/0719a924))
+
+
 <a name"1.3.0"></a>
 ## 1.3.0 (2016-01-20)
 
