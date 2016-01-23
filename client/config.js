@@ -33,7 +33,7 @@ System.config({
     "fetch": "github:github/fetch@0.10.1",
     "font-awesome": "npm:font-awesome@4.5.0",
     "spoonx/aurelia-api": "github:spoonx/aurelia-api@2.0.2",
-    "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@0.13.0",
+    "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@0.13.2",
     "spoonx/aurelia-notification": "github:spoonx/aurelia-notification@master",
     "text": "github:systemjs/plugin-text@0.0.3",
     "wavded/humane-js": "github:wavded/humane-js@3.2.2",
@@ -59,7 +59,7 @@ System.config({
       "extend": "npm:extend@3.0.0",
       "querystring": "github:jspm/nodelibs-querystring@0.1.0"
     },
-    "github:spoonx/aurelia-auth@0.13.0": {
+    "github:spoonx/aurelia-auth@0.13.2": {
       "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
       "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.8",
       "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.0.1",
