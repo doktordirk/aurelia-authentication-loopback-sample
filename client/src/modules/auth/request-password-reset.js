@@ -1,9 +1,9 @@
 import {inject} from 'aurelia-framework';
-import {Rest} from 'spoonx/aurelia-api';
+import {Endpoint} from 'spoonx/aurelia-api';
 import {Router} from 'aurelia-router';
 import {Notify} from 'modules/notify';
 
-@inject(Rest, Router, Notify)
+@inject(Endpoint.of('auth'), Router, Notify)
 export class RequestPasswordReset {
   requestPath = 'users/reset'
   heading = 'Passord reset request';

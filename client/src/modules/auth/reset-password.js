@@ -1,19 +1,17 @@
 import {inject} from 'aurelia-framework';
-import {HttpClient, json} from 'aurelia-fetch-client';
-import {AuthService} from'spoonx/aurelia-auth';
+import {Endpoint} from 'spoonx/aurelia-api';
 import {Router} from 'aurelia-router';
 import {Notify} from 'modules/notify';
 
-@inject(HttpClient, AuthService, Router, Notify)
+@inject(Endpoint.of('auth'), Router, Notify)
 export class ResetPassword {
-  resetPath = 'users/me/set-password'
-  heading = 'Password reset'
-  password = ''
-  params = {}
+  resetPath = 'users/me/set-password';
+  heading = 'Password reset';
+  password = '';
+  params = {};
 
-  constructor(http, auth, router, notify) {
-    this.http = http;
-    this.auth = auth;
+  constructor(rest, router, notify) {
+    this.rest = rest;
     this.router = router;
     this.notify = notify;
   }
@@ -28,15 +26,14 @@ export class ResetPassword {
       password: this.password,
       confirmation: this.password
     };
+    let options = {
+      headers: { 'authorization': this.params.access_token }
+    };
 
-    return this.http.fetch(this.resetPath, {
-      headers: { 'authorization': this.params.access_token },
-      method: 'post',
-      body: json(content)
-    })
-    .then( () => {
-      this.router.navigate('login');
-    })
-   .catch(error => this.notify.error(error));
+    return this.rest.post(this.resetPath, content, options)
+      .then( () => {
+        this.router.navigate('login');
+      })
+     .catch(error => this.notify.error(error));
   }
 }

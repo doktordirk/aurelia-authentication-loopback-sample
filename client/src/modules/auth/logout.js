@@ -1,10 +1,10 @@
 import {User} from './user';
 import {inject} from 'aurelia-framework';
 import {AuthService} from 'spoonx/aurelia-auth';
-import {Rest} from 'spoonx/aurelia-api';
+import {Endpoint} from 'spoonx/aurelia-api';
 import {Notify} from 'modules/notify';
 
-@inject(User, AuthService, Rest, Notify)
+@inject(User, AuthService, Endpoint.of('auth'), Notify)
 export class Logout {
   constructor(user, auth, rest, notify) {
     this.user = user;
