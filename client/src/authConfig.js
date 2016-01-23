@@ -3,7 +3,7 @@ let configForDevelopment = {
   endpoint: 'auth',
   configureEndpoints: ['auth'],
   baseUrl: '',  // server url. already set in main.js to localhost:300/api
-  httpInterceptor: true, // true=add auth token to all! http headers
+  httpInterceptor: true, // true=add auth token to httpInterceptor
   loginUrl: 'users/login',    // api login url
   signupUrl: 'users',  // api signup url
   profileUrl: 'users/me', // api profile url

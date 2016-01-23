@@ -81,14 +81,13 @@ By default loopback uses session token for authorization.
 An aurelia client app with authorized pages for user profile and customer management and unauthorized pages for login, signup and customer listing.
 
 ## Details
-More inforemation about the loopback server and the aurelia client code are in the /doc folder.
+More inforemation about the loopback server and the aurelia client code are in the [./doc](./doc) folder.
 
 ## Limitations
-spoonx/aurelia-api does not provide multiple endpoints yet. Thus switching endpoints is cumbersome and currently always send your token.
+Config settings are not used consitently.
 
 ## Plans
 - JWT
 - Better scripts
 - Email verification per pasting token
-- Simple multiple endpoints using hopefully coming [spoonx/aurelia-api](https://github.com/SpoonX/aurelia-api) improvements
 - Email templates
