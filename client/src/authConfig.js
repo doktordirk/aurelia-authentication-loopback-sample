@@ -11,7 +11,7 @@ let configForDevelopment = {
   loginOnSignup: false,
   loginRedirect: '/#profile',  // internal aurelia redirect root
   signupRedirect: '/#confirm', // internal aurelia redirect root
-  tokenName: 'id',  // key of the token in api response. 'id' for loopback
+  responseTokenProp: 'id',  // key of the token in api response. 'id' for loopback
   tokenPrefix: 'aurelia', // custom prefix for storage
   authToken: '',  // 'prefix' for header token. ''=empty for loopback
 
