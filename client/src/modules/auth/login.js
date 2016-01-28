@@ -17,7 +17,7 @@ export class Login {
  login() {
   // login per email
    return this.auth.login(this.email, this.password)
-   .catch(error=>this.notify.error(error));
+     .catch(error=>this.notify.error(error));
  }
 
  authenticate(name) {

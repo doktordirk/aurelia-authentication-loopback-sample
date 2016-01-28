@@ -22,7 +22,7 @@ jspm install
 ```
 ### Configuration
 #### Third-party login
-Currently included is only facebook. But google+ and twitter are also included in [loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer)
+Currently included is only facebook and google+, but twitter is also included in [loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer)
 
 ##### Facebook
 You'll need a facebook developer account (developers.facebook.com). Add a new website app (skip quick start).
@@ -90,7 +90,7 @@ More inforemation about the loopback server and the aurelia client code are in t
 Config settings are not used consitently.
 
 ## Plans
-- JWT
+- JWT / Switch to Passport
 - Better scripts
 - Email verification per pasting token
 - Email templates

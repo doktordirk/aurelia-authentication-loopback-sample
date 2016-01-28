@@ -21,16 +21,16 @@ let configForDevelopment = {
       url: 'users/facebook',  // api route to facebook methods
       clientId: '937004143046787',  // id of the facebook app
       authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-      redirectUri: window.location.origin + '/' || window.location.protocol + '//' + window.location.host + '/',
       scope: ['email'],  // requested permissions
-      scopeDelimiter: ',',
-      nonce: function() {
-        return Math.random();
-      },
-      requiredUrlParams: ['nonce', 'display', 'scope'],
-      display: 'popup',
-      type: '2.5',
-      popupOptions: { width: 580, height: 400 }
+      type: '2.5'
+    },
+    google: {
+      name: 'google',
+      url: 'users/google',
+      clientId: '569253544793-jg6vhjl8q9h7blta967pdv0ao4qmlrra.apps.googleusercontent.com',
+      authorizationEndpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
+      scope: ['profile', 'email'],
+      type: '2.0'
     }
   }
 };

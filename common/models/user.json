@@ -9,6 +9,9 @@
     "facebook": {
       "type": "string"
     },
+    "google": {
+      "type": "string"
+    },
     "firstName": {
       "type": "string"
     },
@@ -71,6 +74,20 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "facebook-get"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "google"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "google-get"
     },
     {
      "principalType": "ROLE",

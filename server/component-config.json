@@ -17,9 +17,24 @@
 	      "gender": "gender",
 	      "birthday":"birthday"
 	    },
+	    "credentials": {
+	      "private": "Your App Secret: set in same place in component-config.local/production.json"
+	    }
+	  },
+    "google": {
+      "model": "${userModel}",
       "credentials": {
-        "private": "the App Serect: set in same place in component-config.local/production.json"
+        "private": "the Client Sercet: set in same place in component-config.local/production.json"
+      },
+      "uri": "/google",
+      "mapping": {
+        "sub": "google",
+        "email": "email",
+        "given_name": "firstName",
+        "family_name": "lastName",
+        "name": "displayName",
+        "gender": "gender"
       }
-	  }
-	}
+    }
+  }
 }

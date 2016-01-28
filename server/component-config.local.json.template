@@ -4,6 +4,11 @@
 	    "credentials": {
         "private": "your facebook App Secret"
 	    }
-	  }
+	  },
+    "google": {
+      "credentials": {
+        "private": "your google+ Client Secret"
+      }
+    }
 	}
 }
