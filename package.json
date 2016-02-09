@@ -1,6 +1,6 @@
 {
   "name": "aurelia-auth-loopback",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Sample aurelia-auth loopback application",
   "main": "server/server.js",
   "scripts": {
