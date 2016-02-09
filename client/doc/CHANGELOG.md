@@ -1,3 +1,12 @@
+<a name"1.3.3"></a>
+### 1.3.3 (2016-02-09)
+
+
+#### Bug Fixes
+
+* **nav-bar:** customElement binding ([66c3a320](http://github.com/aurelia/skeleton-navigation/commit/66c3a320))
+
+
 <a name"1.3.2"></a>
 ### 1.3.2 (2016-01-28)
 
