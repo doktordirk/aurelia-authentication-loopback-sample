@@ -1,7 +1,5 @@
 /* eslint-disable no-var, no-shadow, dot-notation */
 
-var babel = require('babel');
-
 module.exports = function(wallaby) {
   return {
     files: [
@@ -9,7 +7,8 @@ module.exports = function(wallaby) {
       {pattern: 'jspm_packages/system.js', instrument: false},
       {pattern: 'config.js', instrument: false},
 
-      {pattern: 'src/**/*.js', load: false}
+      {pattern: 'src/**/*.js', load: false},
+      {pattern: 'test/unit/setup.js', load: false}
 
     ],
 
@@ -19,7 +18,6 @@ module.exports = function(wallaby) {
 
     compilers: {
       '**/*.js': wallaby.compilers.babel({
-        babel: babel,
         optional: [
           'es7.decorators',
           'es7.classProperties'
@@ -47,9 +45,13 @@ module.exports = function(wallaby) {
         promises.push(System['import'](wallaby.tests[i].replace(/\.js$/, '')));
       }
 
-      Promise.all(promises).then(function() {
-        wallaby.start();
-      });
+      System.import('test/unit/setup')
+        .then(function () {
+          return Promise.all(promises);
+        })
+        .then(function() {
+          wallaby.start();
+        }).catch(function (e) { setTimeout(function (){ throw e; }, 0); });
     },
 
     debug: false
