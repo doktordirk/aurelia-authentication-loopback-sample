@@ -20,7 +20,7 @@ export class Logout {
     .then(() => {
       // delete local token and redirect in any case
       this.user.removeRoles();
-      this.auth.logout('#/login');
+      this.auth.logout();
     });
   }
 }
