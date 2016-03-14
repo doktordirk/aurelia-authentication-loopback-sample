@@ -43,6 +43,9 @@ gulp.task('serve-bundle', ['bundle', 'node'], function(done) {
   var proxyOptionsApiRoute = url.parse('http://localhost:' + paths.nodeJsPort +  '/api');
   proxyOptionsApiRoute.route = '/api';
 
+  var proxyOptionsAuthRoute = url.parse('http://localhost:' + paths.nodeJsPort +  '/auth');
+  proxyOptionsAuthRoute.route = '/auth';
+
   browserSync({
     online: false,
     open: false,
