@@ -20,7 +20,7 @@
   "user": {
     "dataSource": "db",
     "options": {
-      "emailVerificationRequired": true
+      "emailVerificationRequired": false
     }
   },
   "AccessToken": {
