@@ -17,7 +17,15 @@ export function configure(aurelia) {
       config.configure(authConfig);
     })
     .plugin('aurelia-i18n', instance => {
-      instance.setup({});
+      instance.setup({
+        resGetPath: 'locale/__lng__/__ns__.json',
+        lng: 'en',
+        attributes: ['t', 'i18n'],
+        getAsync: true,
+        sendMissing: false,
+        fallbackLng: 'en',
+        debug: true
+      });
     })
     .plugin('aurelia-animator-css');
 
