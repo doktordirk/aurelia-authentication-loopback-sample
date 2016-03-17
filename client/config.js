@@ -12,6 +12,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-beta.1.1.2",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1.1.4",
@@ -34,8 +35,8 @@ System.config({
     "fetch": "github:github/fetch@0.11.0",
     "font-awesome": "npm:font-awesome@4.5.0",
     "spoonx/aurelia-api": "github:spoonx/aurelia-api@2.0.8",
-    "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@0.13.6",
-    "spoonx/aurelia-notification": "github:spoonx/aurelia-notification@0.0.3",
+    "spoonx/aurelia-auth": "github:spoonx/aurelia-auth@0.13.8",
+    "spoonx/aurelia-notification": "github:spoonx/aurelia-notification@0.0.5",
     "text": "github:systemjs/plugin-text@0.0.3",
     "wavded/humane-js": "github:wavded/humane-js@3.2.2",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -59,14 +60,14 @@ System.config({
       "extend": "npm:extend@3.0.0",
       "qs": "npm:qs@6.1.0"
     },
-    "github:spoonx/aurelia-auth@0.13.6": {
+    "github:spoonx/aurelia-auth@0.13.8": {
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.1.5",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.1.1",
       "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.1.3",
       "fetch": "github:github/fetch@0.11.0",
       "spoonx/aurelia-api": "github:spoonx/aurelia-api@2.0.8"
     },
-    "github:spoonx/aurelia-notification@0.0.3": {
+    "github:spoonx/aurelia-notification@0.0.5": {
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.1.5",
       "aurelia-i18n": "npm:aurelia-i18n@0.4.13",
       "javascript-decorators": "npm:javascript-decorators@0.7.1",
