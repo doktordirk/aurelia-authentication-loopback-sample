@@ -1,7 +1,7 @@
 import AppRouterConfig from 'app.router.config';
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { FetchConfig } from 'spoonx/aurelia-auth';
+import { FetchConfig } from 'spoonx/aurelia-authentication';
 
 @inject( Router, FetchConfig, AppRouterConfig )
 export class App {

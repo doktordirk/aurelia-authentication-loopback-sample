@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {AuthService} from 'spoonx/aurelia-auth';
+import {AuthService} from 'spoonx/aurelia-authentication';
 import {User} from './modules/auth/user';
 import {customElement, bindable} from 'aurelia-framework';
 

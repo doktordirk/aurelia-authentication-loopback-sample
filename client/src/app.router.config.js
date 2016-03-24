@@ -1,7 +1,7 @@
 import {AdminStep} from './modules/auth/admin-step';
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {AuthorizeStep} from 'spoonx/aurelia-auth';
+import {AuthorizeStep} from 'spoonx/aurelia-authentication';
 
 @inject(Router)
 export default class {

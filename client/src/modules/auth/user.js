@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {AuthService} from 'spoonx/aurelia-auth';
+import {AuthService} from 'spoonx/aurelia-authentication';
 
 @inject(AuthService)
 export class User {

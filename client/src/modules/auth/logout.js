@@ -1,6 +1,6 @@
 import {User} from './user';
 import {inject} from 'aurelia-framework';
-import {AuthService} from 'spoonx/aurelia-auth';
+import {AuthService} from 'spoonx/aurelia-authentication';
 import {Endpoint} from 'spoonx/aurelia-api';
 import {Notify} from 'modules/notify';
 

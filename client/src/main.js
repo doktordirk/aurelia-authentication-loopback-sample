@@ -13,7 +13,7 @@ export function configure(aurelia) {
         .registerEndpoint('auth', 'http://localhost:3000/api/')
         .setDefaultEndpoint('api');
     })
-    .plugin('spoonx/aurelia-auth', config => {
+    .plugin('spoonx/aurelia-authentication', config => {
       config.configure(authConfig);
     })
     .plugin('aurelia-i18n', instance => {
