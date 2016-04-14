@@ -57,7 +57,7 @@ In the root folder type:
 ```
 npm start
 ```
-This builds the aurelia-client and serves client and api. Open `http://localhost:3000` to sign up or use the provided user email:user@example.com / password:none
+This builds the aurelia-client and serves client and api. Open `http://localhost:9000` to sign up or use the provided user email:user@example.com / password:none
 
 ## What's in it
 #### Server

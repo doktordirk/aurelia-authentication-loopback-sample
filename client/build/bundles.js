@@ -30,8 +30,8 @@ module.exports = {
         "aurelia-logging-console",
         "bootstrap",
         "bootstrap/css/bootstrap.css!text",
-		    "spoonx/aurelia-api",
-        "spoonx/aurelia-auth",
+        "spoonx/aurelia-api",
+        "spoonx/aurelia-authentication",
         "spoonx/aurelia-notification"
       ],
       "options": {

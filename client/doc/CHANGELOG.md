@@ -1,102 +1,11 @@
-<a name"1.3.4"></a>
-### 1.3.4 (2016-02-09)
-
-
-<a name"1.3.3"></a>
-### 1.3.3 (2016-02-09)
+<a name"1.1.1"></a>
+### 1.1.1 (2016-02-15)
 
 
 #### Bug Fixes
 
-* **nav-bar:** customElement binding ([66c3a320](http://github.com/aurelia/skeleton-navigation/commit/66c3a320))
-
-
-<a name"1.3.2"></a>
-### 1.3.2 (2016-01-28)
-
-
-<a name"1.3.1"></a>
-### 1.3.1 (2016-01-23)
-
-
-#### Bug Fixes
-
-* **client:** change remaining Rest to Endpoint ([fd5e0f87](http://github.com/aurelia/skeleton-navigation/commit/fd5e0f87))
-* **project:** upgraded bugged aurelia-auth ([0719a924](http://github.com/aurelia/skeleton-navigation/commit/0719a924))
-
-
-<a name"1.3.0"></a>
-## 1.3.0 (2016-01-20)
-
-
-<a name"1.2.5"></a>
-### 1.2.5 (2016-01-14)
-
-
-#### Bug Fixes
-
-* **Role:** back to build-in Role model ([18767048](http://github.com/aurelia/skeleton-navigation/commit/18767048))
-* **client:** dependency update ([e464bdbf](http://github.com/aurelia/skeleton-navigation/commit/e464bdbf))
-* **config.json:** Configure admin template missing ([54696b6a](http://github.com/aurelia/skeleton-navigation/commit/54696b6a))
-* **user.json:** set proper related model ACL ([97fead46](http://github.com/aurelia/skeleton-navigation/commit/97fead46))
-
-
-#### Features
-
-* **client:** admin page ([2546d7d8](http://github.com/aurelia/skeleton-navigation/commit/2546d7d8))
-* **create-admin:** admin and admin role ([f347e0c4](http://github.com/aurelia/skeleton-navigation/commit/f347e0c4))
-* **notify:** More feedback ([5edf515e](http://github.com/aurelia/skeleton-navigation/commit/5edf515e))
-
-
-<a name"1.2.4"></a>
-### 1.2.4 (2016-01-09)
-
-
-#### Bug Fixes
-
-* **notification:** I18n initialization. ([64f16b87](http://github.com/aurelia/skeleton-navigation/commit/64f16b87))
-* **notify:** Display strings unchanged ([accef304](http://github.com/aurelia/skeleton-navigation/commit/accef304))
-
-
-#### Features
-
-* **notify:** Notifications ([bc2b084b](http://github.com/aurelia/skeleton-navigation/commit/bc2b084b))
-
-
-<a name"1.2.3"></a>
-### 1.2.3 (2016-01-07)
-
-
-#### Features
-
-* **project:** Reset Password option ([8bcc0681](http://github.com/aurelia/skeleton-navigation/commit/8bcc0681))
-
-
-<a name"1.2.2"></a>
-### 1.2.2 (2016-01-06)
-
-
-#### Features
-
-* **project:** Email verification added ([a3aab928](http://github.com/aurelia/skeleton-navigation/commit/a3aab928))
-
-
-<a name"1.2.1"></a>
-### 1.2.1 (2016-01-05)
-
-
-#### Bug Fixes
-
-* **user.json:** Removed unneeded acls ([68b7284a](http://github.com/aurelia/skeleton-navigation/commit/68b7284a))
-
-
-#### Features
-
-* **project:** Added facebook login using loopback-component-satellizer ([cedeedaf](http://github.com/aurelia/skeleton-navigation/commit/cedeedaf))
-
-
-<a name"1.2.0"></a>
-## 1.2.0 (2016-01-03)
+* **project:** missing dependency ([cf22d121](http://github.com/aurelia/skeleton-navigation/commit/cf22d121))
+* **users:** use aurelia-api for github users page ([b1cc6643](http://github.com/aurelia/skeleton-navigation/commit/b1cc6643))
 
 
 ### 1.0.0-beta.1.0.4 (2015-12-22)

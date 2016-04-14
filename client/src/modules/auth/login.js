@@ -7,7 +7,8 @@ export class Login {
  constructor(auth, notify) {
    this.auth = auth;
    this.notify = notify;
- }
+   this.auth.authentication.getLoginRoute();
+  }
 
  heading  = 'Login';
 
@@ -15,13 +16,13 @@ export class Login {
  password = '';
 
  login() {
-  // login per email
+   // login per email
    return this.auth.login(this.email, this.password)
      .catch(error=>this.notify.error(error));
  }
 
  authenticate(name) {
-   return this.auth.authenticate(name, false, null)
+   return this.auth.authenticate(name)
      .catch(error=>console.error(error));
  }
 }

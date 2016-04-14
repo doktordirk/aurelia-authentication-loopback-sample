@@ -7,7 +7,7 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging() // enable debug logging
-    .plugin('spoonx/aurelia-api', config => {
+    .plugin('aurelia-api', config => {
       config
         .registerEndpoint('api', 'http://localhost:3000/api/')
         .registerEndpoint('auth', 'http://localhost:3000/api/')

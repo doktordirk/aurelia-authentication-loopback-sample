@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {Endpoint} from 'spoonx/aurelia-api';
+import {Endpoint} from 'aurelia-api';
 import {Router} from 'aurelia-router';
 import {Notify} from 'modules/notify';
 
