@@ -15,9 +15,6 @@ gulp.task('serve', ['build', 'node'], function(done) {
   var proxyOptionsApiRoute = url.parse('http://localhost:' + paths.nodeJsPort +  '/api');
   proxyOptionsApiRoute.route = '/api';
 
-  var proxyOptionsAuthRoute = url.parse('http://localhost:' + paths.nodeJsPort +  '/auth');
-  proxyOptionsAuthRoute.route = '/auth';
-
   browserSync({
     online: false,
     open: false,
@@ -26,8 +23,7 @@ gulp.task('serve', ['build', 'node'], function(done) {
       baseDir: ['.'],
       middleware: [
         proxyOptionsAccessControl,
-        proxy(proxyOptionsApiRoute),
-        proxy(proxyOptionsAuthRoute)]
+        proxy(proxyOptionsApiRoute)]
     }
   }, done);
 });
@@ -43,9 +39,6 @@ gulp.task('serve-bundle', ['bundle', 'node'], function(done) {
   var proxyOptionsApiRoute = url.parse('http://localhost:' + paths.nodeJsPort +  '/api');
   proxyOptionsApiRoute.route = '/api';
 
-  var proxyOptionsAuthRoute = url.parse('http://localhost:' + paths.nodeJsPort +  '/auth');
-  proxyOptionsAuthRoute.route = '/auth';
-
   browserSync({
     online: false,
     open: false,
@@ -54,8 +47,7 @@ gulp.task('serve-bundle', ['bundle', 'node'], function(done) {
       baseDir: ['.'],
       middleware: [
         proxyOptionsAccessControl,
-        proxy(proxyOptionsApiRoute),
-        proxy(proxyOptionsAuthRoute)]
+        proxy(proxyOptionsApiRoute)]
     }
   }, done);
 });

@@ -1,7 +1,7 @@
 {
-  "name": "aurelia-auth-loopback",
+  "name": "aurelia-authentication-loopback-sample",
   "version": "1.3.4",
-  "description": "Sample aurelia-auth loopback application",
+  "description": "Aurelia skeleton using aurelia-authentication and a loopback server",
   "main": "server/server.js",
   "scripts": {
     "start": "gulp --gulpfile=\"client/gulpfile.js\" watch",
@@ -9,27 +9,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/doktordirk/aurelia-auth-loopback-sample"
+    "url": "git+https://github.com/doktordirk/aurelia-authentication-loopback-sample"
   },
   "keywords": [
     "aurelia",
-    "aurelia-auth",
+    "aurelia-authentication",
     "oauth",
     "authentication",
     "loopback"
   ],
   "author": "doktordirk <doktordirk@outlook.de>",
-  "contributors": [
-    {
-      "name": "paul van bladel",
-      "url": "https://github.com/paulvanbladel"
-    }
-  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/doktordirk/aurelia-auth-loopback-sample/issues"
+    "url": "https://github.com/doktordirk/aurelia-authentication-loopback-sample/issues"
   },
-  "homepage": "https://github.com/doktordirk/aurelia-auth-loopback-sample#readme",
+  "homepage": "https://github.com/doktordirk/aurelia-authentication-loopback-sample#readme",
   "dependencies": {
     "async": "~0.9.0",
     "compression": "^1.6.1",
@@ -39,7 +33,6 @@
     "loopback-boot": "^2.17.0",
     "loopback-component-satellizer": "^2.0.2",
     "loopback-datasource-juggler": "^2.45.2",
-    "morgan": "^1.6.1",
     "serve-favicon": "^2.3.0"
   },
   "optionalDependencies": {

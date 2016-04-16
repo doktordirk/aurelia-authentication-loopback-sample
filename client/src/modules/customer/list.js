@@ -1,22 +1,22 @@
-import {inject} from 'aurelia-framework';
-import {CustomerData} from './customerData';
-import {Router} from 'aurelia-router';
-import {Notify} from 'modules/notify';
+import { inject } from 'aurelia-framework';
+import { CustomerData } from './customerData';
+import { Router } from 'aurelia-router';
 
-@inject(CustomerData, Router, Notify)
+@inject(CustomerData, Router)
 export class List {
   heading = 'Customer management';
 
   customers = [];
 
-  constructor(data, router, notify) {
-    this.data = data;
+  constructor(data, router) {
+    this.service = data;
     this.router = router;
-    this.notify = notify;
   }
 
   gotoCustomer(customer) {
-    this.router.navigateToRoute('edit', { id: customer.id });
+    this.router.navigateToRoute('edit', {
+      id: customer.id
+    });
   }
 
   new() {
@@ -24,14 +24,13 @@ export class List {
   }
 
   getData() {
-    //implement spinner
-
-    return this.data.getAll()
-      .then(customers => this.customers = customers);
+    return this.service.getAll()
+      .then(customers => {
+        this.customers = customers;
+      });
   }
 
   activate() {
-    return this.getData()
-      .catch(error => this.notify.error(error));
+    return this.getData();
   }
 }

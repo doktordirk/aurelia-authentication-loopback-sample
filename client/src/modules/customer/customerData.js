@@ -1,38 +1,34 @@
-import {inject} from 'aurelia-framework';
-import {Endpoint} from 'aurelia-api';
+import { inject } from 'aurelia-framework';
+import { Endpoint} from 'aurelia-api';
 
-@inject(Endpoint.of('auth'))
+@inject(Endpoint.of('api'))  // the 'api' endpoint with Authorization header
 export class CustomerData {
 
-  model = 'users/me/customers';
+  model = 'customers';
 
   constructor(rest) {
-    this.rest = rest;
-  }
-
-  get modelPath() {
-    return `${this.model}`;
+    this.apiEndpoint = rest;
   }
 
   getById(id) {
-    return this.rest.find(this.modelPath, id);
+    return this.apiEndpoint.find(this.model, id);
   }
 
   getAll() {
-    return this.rest.find(this.modelPath);
+    return this.apiEndpoint.find(this.model);
   }
 
   delete(customer) {
-    return this.rest.destroy(this.modelPath, customer.id);
+    return this.apiEndpoint.destroy(this.model, customer.id);
   }
 
   save(customer) {
     let request;
 
     if (customer.id) {
-      request = this.rest.update(this.modelPath, customer.id, customer);
+      request = this.apiEndpoint.update(this.model, customer.id, customer);
     } else {
-      request = this.rest.create(this.modelPath, customer);
+      request = this.apiEndpoint.create(this.model, customer);
     }
 
     return request;

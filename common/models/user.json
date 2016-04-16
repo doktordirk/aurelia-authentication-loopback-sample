@@ -52,13 +52,6 @@
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW",
-      "property": "set-password"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW",
       "property": "unlink"
     },
     {
@@ -130,13 +123,6 @@
      "principalId": "$owner",
      "permission": "ALLOW",
      "property": "__updateById__customers"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "admin",
-      "permission": "ALLOW",
-      "property": "*"
     }
   ],
   "methods": {}

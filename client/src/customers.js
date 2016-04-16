@@ -1,19 +1,17 @@
 import {inject} from 'aurelia-framework';
 import {Endpoint} from 'aurelia-api';
 
-@inject(Endpoint.of())
+@inject(Endpoint.of())  //default endpoint (was et to 'public')
 export class Customers {
   heading = 'Customers';
   customers = [];
 
-  model = 'customers';
-
   constructor(rest) {
-    this.rest = rest;
+    this.publicApi = rest;
   }
 
   activate() {
-    return this.rest.find(this.model)
+    return this.publicApi.find('customers')
       .then(customers => this.customers = customers);
   }
 }

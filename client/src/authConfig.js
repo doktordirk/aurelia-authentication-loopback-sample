@@ -1,7 +1,7 @@
 // auth config when running on localhost
 let configForDevelopment = {
-  endpoint: 'auth',
-  configureEndpoints: ['auth', 'api'],
+  endpoint: 'auth',   // use 'auth' as endpoint for aurelia-authentication
+  configureEndpoints: ['auth', 'api'],  // add Authorization headers to those for authenticated requests
   baseUrl: '',  // server url. already set in main.js to localhost:300/api
   httpInterceptor: true, // true=add auth token to httpInterceptor
   loginUrl: 'users/login',    // api login url
@@ -10,7 +10,7 @@ let configForDevelopment = {
   unlinkUrl: 'users/me/unlink/', // api unlink third-party url
   loginOnSignup: false,
   loginRedirect: '#/profile',  // internal aurelia redirect root
-  signupRedirect: '#/confirm', // internal aurelia redirect root
+  signupRedirect: '#/login', // internal aurelia redirect root
   logoutRedirect: '#/login',
   loginRoute: '/login',
   responseTokenProp: 'id',  // key of the token in api response. 'id' for loopback

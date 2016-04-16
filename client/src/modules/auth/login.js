@@ -1,13 +1,10 @@
 import {inject} from 'aurelia-framework';
-import {AuthService} from 'spoonx/aurelia-authentication';
-import {Notify} from 'modules/notify';
+import {AuthService} from 'aurelia-authentication';
 
-@inject(AuthService, Notify)
+@inject(AuthService)
 export class Login {
- constructor(auth, notify) {
+ constructor(auth) {
    this.auth = auth;
-   this.notify = notify;
-   this.auth.authentication.getLoginRoute();
   }
 
  heading  = 'Login';
@@ -17,12 +14,10 @@ export class Login {
 
  login() {
    // login per email
-   return this.auth.login(this.email, this.password)
-     .catch(error=>this.notify.error(error));
+   return this.auth.login(this.email, this.password);
  }
 
  authenticate(name) {
-   return this.auth.authenticate(name)
-     .catch(error=>console.error(error));
+   return this.auth.authenticate(name);
  }
 }

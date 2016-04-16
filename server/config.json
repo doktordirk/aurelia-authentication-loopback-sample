@@ -27,6 +27,5 @@
       "disableStackTrace": false
     }
   },
-  "legacyExplorer": false,
-  "userModel": "user"
+  "legacyExplorer": false
 }

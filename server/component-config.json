@@ -4,7 +4,7 @@
   },
   "loopback-component-satellizer": {
 	  "facebook": {
-	    "model": "${userModel}",
+	    "model": "user",
 	    "version": "v2.5",
 	    "fields": ["email","name","last_name","first_name","gender","birthday"],
 	    "uri": "/facebook",
@@ -18,13 +18,13 @@
 	      "birthday":"birthday"
 	    },
 	    "credentials": {
-	      "private": "Your App Secret: set in same place in component-config.local/production.json"
+	      "private": "Your app secret: set in same place in component-config.[local/production].json"
 	    }
 	  },
     "google": {
-      "model": "${userModel}",
+      "model": "user",
       "credentials": {
-        "private": "the Client Sercet: set in same place in component-config.local/production.json"
+        "private": "the client sercet: set in same place in component-config.[local/production].json"
       },
       "uri": "/google",
       "mapping": {

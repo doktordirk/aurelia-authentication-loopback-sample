@@ -18,7 +18,6 @@ module.exports = {
         "aurelia-framework",
         "aurelia-bootstrapper",
         "aurelia-fetch-client",
-        "aurelia-i18n",
         "aurelia-router",
         "aurelia-animator-css",
         "aurelia-templating-binding",
@@ -30,9 +29,8 @@ module.exports = {
         "aurelia-logging-console",
         "bootstrap",
         "bootstrap/css/bootstrap.css!text",
-        "spoonx/aurelia-api",
-        "spoonx/aurelia-authentication",
-        "spoonx/aurelia-notification"
+        "aurelia-api",
+        "spponx/aurelia-authentication"
       ],
       "options": {
         "inject": true,
