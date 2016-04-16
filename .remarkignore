@@ -1,0 +1,8 @@
+# Dependencies.
+node_modules/
+jspm_packages/
+bower_components/
+.idea/
+
+# Make sure the fixtures do not get overwritten.
+test/
