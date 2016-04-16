@@ -1,6 +1,6 @@
-# aurelia-api-loopback-sample
+# aurelia-authentication-loopback-sample
 
-A simple sample of the aurelia-skeleton where [aurelia-api](https://github.com/SpoonX/aurelia-api) is used to connect to a [loopback](http://loopback.io/) server.
+A simple sample of the aurelia-skeleton where [aurelia-authentication](https://github.com/SpoonX/aurelia-authentication) is used to connect to a [loopback](http://loopback.io/) server.
 
 ## Running The App
 
