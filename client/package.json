@@ -90,7 +90,7 @@
       "extend": "npm:extend@^3.0.0",
       "fetch": "github:github/fetch@^0.11.0",
       "font-awesome": "npm:font-awesome@^4.5.0",
-      "spoonx/aurelia-authentication": "github:spoonx/aurelia-authentication@^2.1.1",
+      "spoonx/aurelia-authentication": "github:spoonx/aurelia-authentication@dev",
       "spoonx/aurelia-notification": "github:spoonx/aurelia-notification@^0.0.6",
       "text": "github:systemjs/plugin-text@^0.0.3",
       "wavded/humane-js": "github:wavded/humane-js@^3.2.2"
