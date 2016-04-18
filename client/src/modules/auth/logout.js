@@ -18,7 +18,7 @@ export class Logout {
 
     // for default loopback:
     // since it uses sessionToken, we need to logout on the server
-    this.client.post('users/logout')
+    this.client.post('logout')
     .then(() => {
       // delete local token and redirect in any case
       this.auth.logout();
