@@ -1,12 +1,12 @@
 import { inject } from 'aurelia-framework';
-import { CustomerData } from './customerData';
+import { Customers } from './customers';
 import { Router } from 'aurelia-router';
 
-@inject(CustomerData, Router)
+@inject(Customers, Router)
 export class Edit {
 
-  constructor(data, router) {
-    this.data = data;
+  constructor(customers, router) {
+    this.customers = customers;
     this.router = router;
   }
 
@@ -19,23 +19,21 @@ export class Edit {
   }
 
   activate(params) {
-    this.original = '{}';
-    this.customer = {};
+    this.customer = null;
+    this.original = 'null';
 
     if (params.id) {
-      return this.data.getById(params.id)
-      .then(customer => {
-        this.original = JSON.stringify(customer);
-        return (this.customer = customer);
-      });
+      return this.customers.getById(params.id)
+        .then(customer => {
+          this.original = JSON.stringify(customer);
+          this.customer = customer;
+        });
     }
   }
 
   delete() {
-    this.data.delete(this.customer)
-      .then(() => {
-        this.router.navigate('list');
-      });
+    this.customers.delete(this.customer)
+      .then(() => this.router.navigate('list'));
   }
 
   get isUnchanged() {
@@ -43,7 +41,7 @@ export class Edit {
   }
 
   save() {
-    this.data.save(this.customer)
+    this.customers.save(this.customer)
       .then(customer => {
         this.original = JSON.stringify(customer);
         this.router.navigate('list');

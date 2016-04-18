@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework';
 import { Endpoint} from 'aurelia-api';
 
 @inject(Endpoint.of('api'))  // the 'api' endpoint with Authorization header
-export class CustomerData {
+export class Customers {
 
   model = 'customers';
 
@@ -14,8 +14,8 @@ export class CustomerData {
     return this.apiEndpoint.find(this.model, id);
   }
 
-  getAll() {
-    return this.apiEndpoint.find(this.model);
+  getAll(criteria) {
+    return this.apiEndpoint.find(this.model, criteria);
   }
 
   delete(customer) {

@@ -16,12 +16,12 @@
             </button>
             <button class="btn btn-info"
             click.delegate="save()"
-            disabled.bind="isUnchanged">
+            disabled.bind="isUnchanged || !customer.firstName || !customer.lastName">
             Save
             </button>
             <button class="btn btn-info"
             click.delegate="delete()"
-            disabled.bind="!isUnchanged">
+            disabled.bind="!customer || !isUnchanged">
             Delete
             </button>
         </div>

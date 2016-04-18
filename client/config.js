@@ -50,12 +50,6 @@ System.config({
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.0",
       "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.2.2"
     },
-    "npm:aurelia-api@2.2.0": {
-      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.2.0",
-      "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.2.1",
-      "extend": "npm:extend@3.0.0",
-      "qs": "npm:qs@6.1.0"
-    },
     "npm:aurelia-binding@1.0.0-beta.1.3.2": {
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.0",

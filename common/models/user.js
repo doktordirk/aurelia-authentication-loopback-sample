@@ -30,6 +30,7 @@ module.exports = function(User) {
       });
     });
   };
+
   User.remoteMethod('unlink', {
     description: 'Unlink third-party login provider.',
     accepts: [

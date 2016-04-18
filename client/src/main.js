@@ -9,10 +9,10 @@ export function configure(aurelia) {
     .developmentLogging() // enable debug logging
     .plugin('aurelia-api', config => {
       config
-        .registerEndpoint('github', 'https://api.github.com/')
+        .registerEndpoint('github', 'https://api.github.com/')     // no Authorization headers
         .registerEndpoint('public', 'http://localhost:3000/api/')  // no Authorization headers
-        .registerEndpoint('api', 'http://localhost:3000/api/')     // with Authorization headers for rest access
-        .registerEndpoint('auth', 'http://localhost:3000/api/')    // with Authorization headers for authorization
+        .registerEndpoint('api', 'http://localhost:3000/api/users/me/')  // with Authorization headers for authneticated access to owned data
+        .registerEndpoint('auth', 'http://localhost:3000/api/users/')    // with Authorization headers for authorization
         .setDefaultEndpoint('public');
     })
     .plugin('aurelia-authentication', config => {

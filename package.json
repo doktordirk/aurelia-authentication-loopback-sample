@@ -1,6 +1,6 @@
 {
   "name": "aurelia-authentication-loopback-sample",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Aurelia skeleton using aurelia-authentication and a loopback server",
   "main": "server/server.js",
   "scripts": {

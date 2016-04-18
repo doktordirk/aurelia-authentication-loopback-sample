@@ -1,41 +1,39 @@
-import {User} from './user';
 import {inject} from 'aurelia-framework';
 import {AuthService} from 'aurelia-authentication';
 
-@inject(User, AuthService)
+@inject(AuthService)
 export class Profile {
   heading = 'Profile';
 
-  constructor(user, auth, notify) {
-    this.user = user;
+  constructor(auth) {
     this.auth = auth;
     this.profile = null;
   }
 
+  // needs arrow to keep context
+  setProfile = data => {
+    this.profile = data;
+  }
+
   activate() {
-    return this.user.get()
-      .then(data => this.profile = data)
-      .catch(error => {
-        window.history.back();
-      });
+    return this.auth.getMe()
+      .then(this.setProfile);
   }
 
   update() {
-    return this.user.update(this.profile)
-      .then(data => {
-        this.profile = data;
-      })
+    return this.auth.updateMe(this.profile)
+      .then(this.setProfile);
   }
 
   link(provider) {
-    return this.auth.authenticate(provider, true, null)
-      .then(response => this.user.get())
-      .then(data => this.profile = data)
+    return this.auth.authenticate(provider, 0)   // 0=don't redirect
+      .then(() => this.auth.getMe())             // update profile afterwards
+      .then(this.setProfile)
   }
 
   unlink(provider) {
     return this.auth.unlink(provider)
-      .then(() => this.user.get())
-      .then(data => this.profile = data)
+      .then(() => this.auth.getMe())             // update profile afterwards
+      .then(this.setProfile)
   }
 }

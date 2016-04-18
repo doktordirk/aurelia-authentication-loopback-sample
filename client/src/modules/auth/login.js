@@ -12,11 +12,12 @@ export class Login {
  email    = '';
  password = '';
 
+ // login per email+password
  login() {
-   // login per email
    return this.auth.login(this.email, this.password);
  }
 
+ // login with third-party authentication
  authenticate(name) {
    return this.auth.authenticate(name);
  }

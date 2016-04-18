@@ -1,19 +1,24 @@
-import {User} from './user';
 import {inject} from 'aurelia-framework';
 import {AuthService} from 'aurelia-authentication';
-import {Endpoint} from 'aurelia-api';
 
-@inject(User, AuthService, Endpoint.of('auth'))
+@inject(AuthService)
 export class Logout {
-  constructor(user, auth, rest) {
-    this.user = user;
+  constructor(auth) {
     this.auth = auth;
-    this.rest = rest;
+    this.client = auth.client;
   }
 
   activate() {
-    // post logout to loopback server. deletes token on server
-    this.rest.post('users/logout')
+    /* for JWT:
+    *  since its stateless, we only need to delete the token in the browsers storage
+
+    this.auth.logout();
+
+    */
+
+    // for default loopback:
+    // since it uses sessionToken, we need to logout on the server
+    this.client.post('users/logout')
     .then(() => {
       // delete local token and redirect in any case
       this.auth.logout();

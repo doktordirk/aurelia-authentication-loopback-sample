@@ -30,12 +30,6 @@
   },
   "validations": [],
   "relations": {
-    "Roles": {
-      "type": "hasMany",
-      "model": "Role",
-      "through": "RoleMapping",
-      "foreignKey": "principalId"
-    },
     "customers": {
       "type": "hasMany",
       "model": "customer",
