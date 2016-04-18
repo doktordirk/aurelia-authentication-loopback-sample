@@ -1,6 +1,6 @@
 {
   "name": "aurelia-authentication-loopback-client",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "skeleton-version": "1.0.0-beta.1.2.2",
   "description": "A starter kit for building a standard navigation-style app with Aurelia.",
   "keywords": [
@@ -52,13 +52,12 @@
     "isparta": "^3.1.0",
     "istanbul": "^0.4.2",
     "jasmine-core": "^2.4.1",
-    "jspm": "0.16.15",
     "karma": "^0.13.22",
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chrome-launcher": "^0.2.2",
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^0.3.7",
-    "karma-jspm": "2.0.1-beta.2",
+    "karma-jspm": "2.0.2",
     "object.assign": "^1.0.3",
     "proxy-middleware": "^0.15.0",
     "require-dir": "^0.3.0",
