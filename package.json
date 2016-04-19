@@ -40,12 +40,13 @@
   "devDependencies": {
     "aurelia-tools": "^0.1.22",
     "conventional-changelog": "1.1.0",
-    "gulp": "^3.9.1",
+    "eslint-config-strongloop": "^2.0.0",
+    "eslint-plugin-json": "^1.2.0",
+    "gulp": "^3.8.10",
+    "gulp-babel": "^6.1.2",
     "gulp-bump": "^2.1.0",
-    "gulp-jshint": "^2.0.0",
+    "gulp-eslint": "^2.0.0",
     "gulp-yuidoc": "^0.1.2",
-    "jshint": "^2.9.1",
-    "jshint-stylish": "^2.1.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
     "yargs": "^4.6.0"

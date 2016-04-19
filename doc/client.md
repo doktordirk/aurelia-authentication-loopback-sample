@@ -38,4 +38,4 @@ Uses the login/signup views and view-models.
 
 ### customer/*
 
-Uses aurelia-api for CRUD. Since we configured in `authConfig.js` with `httpInterceptor:true` and the configureEndpoints:['auth'], the authorization token is added to all request. Users can only edit their own customers as defined in `/common/models/user.json`.
+Uses aurelia-api for CRUD. Since we configured in `authConfig.js` with `httpInterceptor: true` and the configureEndpoints:['auth'], the authorization token is added to all request. Users can only edit their own customers as defined in `/common/models/user.json`.

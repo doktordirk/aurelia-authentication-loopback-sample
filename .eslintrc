@@ -1,0 +1,9 @@
+{
+  "extends": "strongloop",
+  "rules": {
+    "comma-dangle": 0
+  },
+  "plugins": [
+    "json"
+  ]
+}

@@ -56,8 +56,7 @@ Sets up out components. `"model": "user"` adds the facebook methods to our accou
 
 ### common/models/customer.json
 
-Here we define our `customer` model.
-We use/inherit the build-in `PersistedModel`.
+Here we define our `customer` model. We use/inherit the build-in `PersistedModel`.
 
 ```json
 "base": "PersistedModel",
@@ -69,7 +68,7 @@ Define the `properties` of the `customer`
 "properties": ..
 ```
 
-Define the `relations` of the `customer`. Here `belongsTo` `user` identified by `userId`.
+Define the `relations` of the `customer`. Here `belongsTo` the `user` identified by `userId`.
 
 ```json
 "relations": {
@@ -119,7 +118,7 @@ Define the access to the rest api methods. First deny * = all, but READ for `$ev
 
 ### common/models/customer.js
 
-With setting "public" for customer in model-config.json the whole rest api gets exposed. Here we remove again all the default rest methods of `PersistedModel` we don't want.
+With setting "public" for customer in model-config.json the whole rest api gets exposed. Here we remove again all the default rest methods of `PersistedModel` we don't want and only keep GET request open for the public.
 
 ### common/models/user.json
 
@@ -136,16 +135,10 @@ Define some additional `properties` of the `user`. Some we already inherited wit
 "properties": ..
 ```
 
-Define the `relations` of the `user`. Here `hasMany` `customers` identified by `userId` and `hasMany` `Roles` through `RoleMapping` identified by `principalId=userId`.
+Define the `relations` of the `user`. Here `hasMany` of `customers` identified by `userId` and `hasMany`.
 
 ```json
 "relations": {
-  "Roles": {
-    "type": "hasMany",
-    "model": "Role",
-    "through": "RoleMapping",
-    "foreignKey": "principalId"
-  },
   "customers": {
     "type": "hasMany",
     "model": "customer",
@@ -162,13 +155,6 @@ Define the access to the rest api methods. With inheriting the build-in model `U
 
 ```json
 "acls": [
-  {
-    "accessType": "EXECUTE",
-    "principalType": "ROLE",
-    "principalId": "$owner",
-    "permission": "ALLOW",
-    "property": "set-password"
-  },
   {
     "accessType": "EXECUTE",
     "principalType": "ROLE",
