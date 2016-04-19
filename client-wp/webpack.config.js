@@ -19,9 +19,16 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new AureliaWebpackPlugin(),
+    new AureliaWebpackPlugin({
+      includeSubModules: [
+        { moduleId: 'aurelia-authentication' }
+      ]
+    }),
     new ProvidePlugin({
-      Promise: 'bluebird'
+      Promise: 'bluebird',
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery" // this doesn't expose jQuery property for window, but expose it to every module
     })
   ],
   module: {
