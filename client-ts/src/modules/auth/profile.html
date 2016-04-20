@@ -1,0 +1,51 @@
+<template>
+  <section class="au-animate">
+
+<div class="container">
+  <div class="panel panel-default col-md-6">
+    <div class="panel-heading">Profile</div>
+    <div class="panel-body">
+      <legend><i class="ion-clipboard"></i> Edit My Profile</legend>
+      <form method="post" ng-submit="updateProfile()">
+        <div class="form-group">
+          <label class="control-label">Profile Picture</label>
+          <img class="profile-picture" src.bind="profile.picture || 'http://placehold.it/100x100'">
+        </div>
+        <div class="form-group">
+          <label class="control-label"><i class="ion-person"></i> Name</label>
+          <input type="text" class="form-control" value.bind="profile.displayName"  />
+        </div>
+        <div class="form-group">
+          <label class="control-label"><i class="ion-at"></i> Email Address</label>
+          <input type="email" class="form-control" value.bind="profile.email" />
+        </div>
+        <button class="btn btn-lg btn-success" click.delegate="update()">Update Information</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel panel-default col-md-6">
+    <div class="panel-heading">Accounts</div>
+    <div class="panel-body">
+      <legend><i class="ion-link"></i> Linked Accounts</legend>
+      <div class="btn-group-vertical">
+        <button class="btn btn-sm btn-danger" if.bind="profile.facebook" click.delegate="unlink('facebook')">
+          <i class="ion-social-facebook"></i> Unlink Facebook Account
+        </button>
+        <button class="btn btn-sm btn-primary" if.bind="!profile.facebook" click.delegate="link('facebook')">
+          <i class="ion-social-facebook"></i> Link Facebook Account
+        </button>
+
+        <button class="btn btn-sm btn-danger" if.bind="profile.google" click.delegate="unlink('google')">
+          <i class="ion-social-googleplus"></i> Unlink Google Account
+        </button>
+        <button class="btn btn-sm btn-primary" if.bind="!profile.google" click.delegate="link('google')">
+          <i class="ion-social-googleplus"></i> Link Google Account
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </section>
+</template>
