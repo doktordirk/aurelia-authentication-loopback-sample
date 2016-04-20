@@ -6,11 +6,13 @@
 
 This is a skeleton for an [Aurelia](http://aurelia.io/) client using [aurelia-authentication](https://github.com/SpoonX/aurelia-authentication) for authorized access to a [Strongloop](http://loopback.io/) loopback api server.
 
-[loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer) is used to handle third-party authentication on the server side.
+[Loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer) is used to handle third-party authentication on the server side.
+
+The aurelia-authentication documentantion you'll find at [aurelia-authentication.spoonx.org](http://aurelia-authentication.spoonx.org/).
 
 ## Installation instructions
 
-### For ES6-SystemJs:
+### For ES6-SystemJs
 
 ```sh
 git clone https://github.com/dirkeisinger/aurelia-authentication-loopback-sample
@@ -29,12 +31,11 @@ gulp watch
 
 This builds the aurelia-client and serves client and api. Open `http://localhost:9000` to sign up or use the provided user email: `user@example.com` / password: `none`
 
-
-### For Typescript-SystemJs:
+### For Typescript-SystemJs
 
 - use client-ts
 
-### For ES6-Webpack:
+### For ES6-Webpack
 
 - use client-wp
 - no 'jspm install' naturally
