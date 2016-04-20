@@ -2,11 +2,15 @@
 
 [![Join the chat at https://gitter.im/SpoonX/Dev](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SpoonX/Dev?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+**Aurelia client included as [ES6-SystemJs](/client), [ES6-Webpack](/client-wp) and [Typescript-SystemJs](/client-ts) versions**
+
 This is a skeleton for an [Aurelia](http://aurelia.io/) client using [aurelia-authentication](https://github.com/SpoonX/aurelia-authentication) for authorized access to a [Strongloop](http://loopback.io/) loopback api server.
 
 [loopback-component-satellizer](https://www.npmjs.com/package/loopback-component-satellizer) is used to handle third-party authentication on the server side.
 
 ## Installation instructions
+
+### For ES6-SystemJs:
 
 ```sh
 git clone https://github.com/dirkeisinger/aurelia-authentication-loopback-sample
@@ -16,6 +20,25 @@ cd client
 npm install
 jspm install
 ```
+
+To run the sample type in the client folder:
+
+```sh
+gulp watch
+```
+
+This builds the aurelia-client and serves client and api. Open `http://localhost:9000` to sign up or use the provided user email: `user@example.com` / password: `none`
+
+
+### For Typescript-SystemJs:
+
+- use client-ts
+
+### For ES6-Webpack:
+
+- use client-wp
+- no 'jspm install' naturally
+- run with `npm start`
 
 ### Configuration
 
@@ -31,16 +54,6 @@ You'll find your facebook app credentials in `Settings->Basic`: App ID (which is
 Copy `/server/component-config.local.json.bak` to `/server/component-config.local.json` and add your facebook App Secret. Loopback applies *.local.json and *.local.js setting files after the default *.json or *.js. *.local.json and *.local.js are added to .gitignore as they **should not be publicly uploaded**.
 
 Open `/client/src/authConfig.js` and add your public facebook clientId=App ID
-
-## How to run the sample
-
-In the root folder type:
-
-```sh
-npm start
-```
-
-This builds the aurelia-client and serves client and api. Open `http://localhost:9000` to sign up or use the provided user email: `user@example.com` / password: `none`
 
 ## What's in it
 
@@ -62,7 +75,7 @@ Users can signup & login with emails or third-party providers (facebook).
 
 ### Aurelia client
 
-#### [/client](/client)
+#### [/client](/client) [/client-ts](/client-ts)  [/client-wp](/client-wp)
 
 An aurelia client app with authorized pages for user profile and customer management and unauthorized pages for login, signup and customer listing.
 
