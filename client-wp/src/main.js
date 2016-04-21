@@ -1,6 +1,6 @@
 var Promise = require('bluebird').config({longStackTraces: false, warnings: false}); // Promise polyfill for IE11 with warnings turned off
 import {bootstrap} from 'aurelia-bootstrapper-webpack';
-
+import 'bootstrap';    // for the nav-bar dropdown
 import 'isomorphic-fetch';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.css';

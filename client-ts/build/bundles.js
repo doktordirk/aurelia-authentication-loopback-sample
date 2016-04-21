@@ -15,6 +15,8 @@ module.exports = {
     },
     "dist/aurelia": {
       "includes": [
+        "aurelia-api",
+        "aurelia-authentication",
         "aurelia-framework",
         "aurelia-bootstrapper",
         "aurelia-fetch-client",
@@ -28,7 +30,8 @@ module.exports = {
         "aurelia-history-browser",
         "aurelia-logging-console",
         "bootstrap",
-        "bootstrap/css/bootstrap.css!text"
+        "bootstrap/css/bootstrap.css!text",
+        "jquery"
       ],
       "options": {
         "inject": true,

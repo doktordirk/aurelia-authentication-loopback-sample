@@ -25,6 +25,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "fetch": "github:github/fetch@0.11.0",
     "font-awesome": "npm:font-awesome@4.6.1",
+    "jquery": "npm:jquery@2.2.3",
     "text": "github:systemjs/plugin-text@0.0.3",
     "github:spoonx/aurelia-api@dev": {
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.2.0",
