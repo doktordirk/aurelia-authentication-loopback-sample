@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prestart": "start node ..",
-    "start": "webpack-dev-server --config webpack.config.js --hot --inline --progress --devtool eval",
+    "start": "npm run dev",
+    "dev": "webpack-dev-server --config webpack.config.js --hot --inline --progress --devtool eval",
     "build": "webpack --config webpack.config.js --progress --profile",
     "prod": "webpack -p --config webpack.prod.config.js --progress --devtool source-map",
     "test": "karma start",

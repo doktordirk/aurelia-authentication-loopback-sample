@@ -12,11 +12,13 @@ The aurelia-authentication documentantion you'll find at [aurelia-authentication
 
 ## Installation instructions
 
-### For ES6-SystemJs
+### For ES6-SystemJs and Typescript-SystemJs
+
+For typescript, replace `cd client` below with `cd client-ts`.
 
 ```sh
-git clone https://github.com/dirkeisinger/aurelia-authentication-loopback-sample
-cd aurelia-authentication-loopback-sample
+git clone https://github.com/dirkeisinger/aurelia-api-loopback-sample
+cd aurelia-api-loopback-sample
 npm install
 cd client
 npm install
@@ -29,17 +31,24 @@ To run the sample type in the client folder:
 gulp watch
 ```
 
-This builds the aurelia-client and serves client and api. Open `http://localhost:9000` to sign up or use the provided user email: `user@example.com` / password: `none`
-
-### For Typescript-SystemJs
-
-- use client-ts
+This builds the aurelia-client and serves the client and the api server. Browse to `localhost:9000` to see it in action. Sign up or use the provided user email: `user@example.com` / password: `none
 
 ### For ES6-Webpack
 
-- use client-wp
-- no 'jspm install' naturally
-- run with `npm start`
+```sh
+git clone https://github.com/dirkeisinger/aurelia-api-loopback-sample
+cd aurelia-api-loopback-sample
+npm install
+cd client-wp
+npm install
+```
+
+To run the sample open two shells:
+
+- run server in one console from the root folder with: `node .`
+- run client in the second console from the client-wp folder with: `npm run dev`
+
+Browse to `localhost:9000` to see it in action. Sign up or use the provided user email: `user@example.com` / password: `none`.
 
 ### Configuration
 
