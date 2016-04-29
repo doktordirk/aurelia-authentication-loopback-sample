@@ -68,8 +68,8 @@
   "jspm": {
     "dependencies": {
       "aurelia-animator-css": "npm:aurelia-animator-css@^1.0.0-beta.1.2.0",
-      "aurelia-api": "github:spoonx/aurelia-api@dev",
-      "aurelia-authentication": "github:spoonx/aurelia-authentication@dev",
+      "aurelia-api": "npm:aurelia-api@^3.0.0-rc1",
+      "aurelia-authentication": "npm:aurelia-authentication@^3.0.0-rc1",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.2.0",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0-beta.1.2.1",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.2.2",
