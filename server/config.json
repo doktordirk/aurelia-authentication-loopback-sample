@@ -27,5 +27,16 @@
       "disableStackTrace": false
     }
   },
-  "legacyExplorer": false
+  "legacyExplorer": false,
+  "jwt": {
+    "user_model": "user",
+    "client_secret": "**do_this_in_config_local_json**",
+    "access_token_ttl": "1d",
+    "refresh_token_ttl": "30d",
+    "properties": {
+      "displayName": "displayName",
+      "email": "email",
+      "userId": "id"
+    }
+  }
 }

@@ -13,9 +13,22 @@
     }
   },
   "session": {},
-  "auth": {},
+  "auth": {
+    "./middleware/authorize": {
+      "params": {
+        "jwt": "${jwt}"
+      }
+    }
+  },
   "parse": {
     "body-parser#json": {}
+  },
+  "refresh": {
+    "./middleware/refresh-token": {
+      "params": {
+        "jwt": "${jwt}"
+      }
+    }
   },
   "routes": {
     "loopback#rest": {

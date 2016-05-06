@@ -5,6 +5,9 @@ var boot       = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+//setting up a /users/me path for logged in uses
+app.use(loopback.token({currentUserLiteral: 'me'}));
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
@@ -28,12 +31,6 @@ boot(app, __dirname, function(err) {
     app.start();
 });
 
-//setting up a /users/me path for logged in uses
-app.use(loopback.token({
-    model: app.models.accessToken,
-    currentUserLiteral: 'me'
-}));
-
-} catch(e){
+} catch(e) {
   console.error('server.js error: ', e.stack);
 }
