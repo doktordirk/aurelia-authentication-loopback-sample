@@ -22,7 +22,7 @@
     "$resolved": true
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "memory",
     "public": false
   },
   "ACL": {
