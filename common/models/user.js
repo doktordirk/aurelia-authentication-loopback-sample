@@ -1,13 +1,5 @@
-var jwt = require('jsonwebtoken');
+var createAccessToken = require('../../server/middleware/createAccessToken');
 var config = require('../../server/config.json');
-var modelConfig = require('../../server/model-config.json');
-
-var error = function(msg, statusCode, code) {
-  var err = new Error(msg);
-  err.statusCode = statusCode;
-  err.code = code;
-  return err;
-};
 
 module.exports = function(User) {
   // remoteMethod User.unlink
@@ -43,40 +35,23 @@ module.exports = function(User) {
   });
 
 
-  // let createAccessToken create JWTs
+  // provide own createAccessToken to create JWTs
   User.prototype.createAccessToken = function (ttl, options, cb) {
     if (cb === undefined && typeof options === 'function') {
-      // createAccessToken(ttl, cb)
       cb = options;
       options = undefined;
     }
 
-//    cb = cb || utils.createPromiseCallback();
-
-    function signToken(tokenPayload, subject, expiresIn) {
-      return jwt.sign(tokenPayload, config.jwt.client_secret, {
-              expiresIn: expiresIn,
-              subject: subject
-            });
-    };
-
-    // main token payload
+    // token payload
     var payload = {};
     for (var key in config.jwt.properties) {
       payload[key] = this[config.jwt.properties[key]];
     }
 
-    // response body
-    var result = {
-      user_id: this.id,
-      access_token: signToken(payload, 'access_token', config.jwt.access_token_ttl)
-    };
-    if (config.jwt.refresh_token_ttl)
-      result.refresh_token = signToken(payload, 'refresh_token', config.jwt.refresh_token_ttl);
+    var response = createAccessToken(payload);
 
-    if (typeof cb !== 'function') {
-      return result;
-    }
-    return cb(null, result);
+    if (typeof cb !== 'function') return response;
+
+    return cb(null, response);
   };
 };
