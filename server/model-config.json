@@ -14,7 +14,7 @@
     ]
   },
   "user": {
-    "dataSource": "db",
+    "dataSource": "user-db",
     "options": {
       "emailVerificationRequired": false
     },
@@ -26,19 +26,19 @@
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "memory",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "memory",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "memory",
     "public": false
   },
   "customer": {
-    "dataSource": "db",
+    "dataSource": "customer-db",
     "public": true,
     "$promise": {},
     "$resolved": true

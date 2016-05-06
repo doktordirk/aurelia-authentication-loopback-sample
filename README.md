@@ -71,7 +71,7 @@ Open `/client/src/authConfig.js` and add your public facebook clientId=App ID
 
 #### [/server](/server)
 
-A [loopback](https://docs.strongloop.com/display/public/LB/LoopBack) api server. A local file is used as database. Have a peek at [mydata.json](mydata.json) to gain some insight. Session tokens are used for authorization (loopback default).
+A [loopback](https://docs.strongloop.com/display/public/LB/LoopBack) api server. Local files are used as database. Have a peek at [user-db.json](/user-db.json) and [customer-db.json](/customer-db.json) to gain some insight. JSON web tokens (jwt) are used for authorization.
 
 #### [/common](/common)
 

@@ -3,9 +3,14 @@
     "name": "memory",
     "connector": "memory"
   },
-  "db": {
-    "name": "db",
+  "user-db": {
+    "name": "user-db",
     "connector": "memory",
-    "file": "../mydata.json"
+    "file": "../user-db.json"
+  },
+  "customer-db": {
+    "name": "customer-db",
+    "connector": "memory",
+    "file": "../customer-db.json"
   }
 }

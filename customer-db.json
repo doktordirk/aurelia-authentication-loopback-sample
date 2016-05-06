@@ -1,0 +1,12 @@
+{
+  "ids": {
+    "customer": 4
+  },
+  "models": {
+    "customer": {
+      "1": "{\"firstName\":\"Hughy\",\"lastName\":\"Grant\",\"userId\":1,\"id\":1}",
+      "2": "{\"firstName\":\"Someone\",\"lastName\":\"ElseMadeThis\",\"userId\":2,\"id\":2}",
+      "3": "{\"firstName\":\"Ger\",\"lastName\":\"Far\",\"userId\":3,\"id\":3}"
+    }
+  }
+}
