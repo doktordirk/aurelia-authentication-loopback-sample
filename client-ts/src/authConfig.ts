@@ -13,9 +13,8 @@ let configForDevelopment = {
   signupRedirect: '#/login', // internal aurelia redirect root
   logoutRedirect: '#/login',
   loginRoute: '/login',
-  responseTokenProp: 'id',  // key of the token in api response. 'id' for loopback
-  tokenPrefix: 'aurelia', // custom prefix for storage
   authToken: '',  // 'prefix' for header token. ''=empty for loopback
+  useRefreshToken: true,
 
   providers: {
     facebook: {
