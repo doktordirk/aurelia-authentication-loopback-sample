@@ -1,4 +1,4 @@
-var createAccessToken = require('../../server/middleware/createAccessToken');
+var jwt = require('jsonwebtoken');
 var config = require('../../server/config.json');
 
 module.exports = function(User) {
@@ -48,7 +48,19 @@ module.exports = function(User) {
       payload[key] = this[config.jwt.properties[key]];
     }
 
-    var response = createAccessToken(payload);
+    var secret = config.jwt.client_secret;
+    var at_ttl = config.jwt.access_token_ttl;
+    var rt_ttl = config.jwt.refresh_token_ttl;
+
+    // response body
+    var response = {
+      user_id: this.id,
+      access_token: jwt.sign(payload, secret, {expiresIn: at_ttl})
+    };
+
+    if (rt_ttl) {
+      response.refresh_token = jwt.sign(payload, secret, {expiresIn: rt_ttl});
+    }
 
     if (typeof cb !== 'function') return response;
 

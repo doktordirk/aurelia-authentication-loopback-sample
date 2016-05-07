@@ -1,24 +1,22 @@
-var createAccessToken = require('../../server/middleware/createAccessToken');
 var jwt = require('jsonwebtoken');
 
 module.exports = function(options) {
   return function refreshToken(req, res, next) {
     if (req.body.grant_type !== 'refresh_token') return next();
 
+    var secret = options.client_secret;
+    var at_ttl = options.access_token_ttl;
+    var rt_ttl = options.refresh_token_ttl;
+
     // verify and decode refresh_token to an object
-    jwt.verify(req.body.refresh_token, options.jwt.client_secret, {
-      subject: 'refresh_token'
-    }, function(err, refresh_token){
+    jwt.verify(req.body.refresh_token, secret, function(err) {
       if (err) return next(err)
 
-      var authorization = req.header('authorization');
-      if (!authorization) return next();
+      var access_token = req.header('authorization');
+      if (!access_token) return next();
 
       // decode access_token to get the user data
-      jwt.verify(authorization, options.jwt.client_secret, {
-        ignoreExpiration: true,
-        subject: 'access_token'
-      }, function(err, token) {
+      jwt.verify(access_token, secret, {ignoreExpiration: true}, function(err, token) {
         if (err) return next(err);
 
         // remove claims
@@ -28,8 +26,17 @@ module.exports = function(options) {
         token.aud = undefined;
         token.sub = undefined;
 
-        // send back new tokes
-        res.json(createAccessToken(token));
+        var response = {
+          'assess_token': jwt.sign(token, secret, {expiresIn: at_ttl}),
+          'refresh_token': jwt.sign(token, secret, {expiresIn: rt_ttl})
+        };
+        
+        if (options.authentication_response_body) {
+          Object.assign(response, options.authentication_response_body);
+        }
+
+        // send back new tokens
+        res.json(response);
       });
     });
   };

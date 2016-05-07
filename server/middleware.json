@@ -26,7 +26,10 @@
   "refresh": {
     "./middleware/refresh-token": {
       "params": {
-        "jwt": "${jwt}"
+        "client_secret": "**do_this_in_config_local_json**",
+        "access_token_ttl": "1d",
+        "refresh_token_ttl": "30d",
+        "authentication_response_body": {"some": "data"}
       }
     }
   },
