@@ -27,10 +27,10 @@ module.exports = function(options) {
         token.sub = undefined;
 
         var response = {
-          'assess_token': jwt.sign(token, secret, {expiresIn: at_ttl}),
+          'access_token': jwt.sign(token, secret, {expiresIn: at_ttl}),
           'refresh_token': jwt.sign(token, secret, {expiresIn: rt_ttl})
         };
-        
+
         if (options.authentication_response_body) {
           Object.assign(response, options.authentication_response_body);
         }

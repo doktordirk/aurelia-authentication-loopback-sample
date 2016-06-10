@@ -30,8 +30,8 @@
   "legacyExplorer": false,
   "jwt": {
     "user_model": "user",
-    "client_secret": "**do_this_in_config_local_json**",
-    "access_token_ttl": "1d",
+    "client_secret": "**do_this_in_xyz_local_json**",
+    "access_token_ttl": "1000",
     "refresh_token_ttl": "30d",
     "properties": {
       "displayName": "displayName",
