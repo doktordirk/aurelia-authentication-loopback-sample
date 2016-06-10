@@ -1,12 +1,13 @@
 import {Router, RouterConfiguration} from 'aurelia-router'
-import {AuthorizeStep} from 'aurelia-authentication';
+import {AuthenticateStep} from 'aurelia-authentication';
+
 
 export class App {
   router: Router;
-  
+
   configureRouter(config: RouterConfiguration, router: Router) {
    config.title = 'Aurelia-Authentication-Loopback-Ts';
-   config.addPipelineStep('authorize', AuthorizeStep); // Add a route filter to the authorize extensibility point.
+   config.addPipelineStep('authorize', AuthenticateStep); // Add a route filter to the authorize extensibility point.
 
    config.map([
     { route: ['', 'welcome'], name: 'welcome',    moduleId: 'welcome',                  nav: true,  title: 'Welcome' },

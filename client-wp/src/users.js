@@ -1,4 +1,4 @@
-import {inject} from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 import { Endpoint} from 'aurelia-api';
 
 @inject(Endpoint.of('github'))

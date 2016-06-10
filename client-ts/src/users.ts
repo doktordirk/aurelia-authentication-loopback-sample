@@ -1,13 +1,13 @@
 import { inject } from 'aurelia-framework';
-import { Endpoint} from 'aurelia-api';
+import { Endpoint, Rest } from 'aurelia-api';
 
 @inject(Endpoint.of('github'))
 export class Users {
   heading = 'Github Users';
   users = [];
-  githubEndpoint; Rest;
+  githubEndpoint: Rest;
 
-  constructor(private endpoint: Endpoint) {
+  constructor(private endpoint: Rest) {
     this.githubEndpoint = endpoint;
   }
 

@@ -12,8 +12,9 @@ let configForDevelopment = {
   loginRedirect: '#/profile',  // internal aurelia redirect root
   signupRedirect: '#/login', // internal aurelia redirect root
   logoutRedirect: '#/login',
+  expiredRedirect: 1,
   loginRoute: '/login',
-  authToken: '',  // 'prefix' for header token. ''=empty for loopback
+  authTokenType: '',  // 'prefix' for header token. ''=empty for loopback
   useRefreshToken: true,
 
   providers: {

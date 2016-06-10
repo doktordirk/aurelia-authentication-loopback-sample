@@ -5,7 +5,7 @@ import {AuthService} from 'aurelia-authentication';
 export class Login {
  constructor(auth) {
    this.auth = auth;
-  }
+ }
 
  heading  = 'Login';
 

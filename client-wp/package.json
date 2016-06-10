@@ -32,8 +32,8 @@
   },
   "homepage": "https://github.com/aurelia/skeleton-navigation#readme",
   "dependencies": {
-    "aurelia-api": "^3.0.0-rc2",
-    "aurelia-authentication": "^3.0.0-rc2",
+    "aurelia-api": "^3.0.0-rc4",
+    "aurelia-authentication": "^3.0.0-rc4",
     "aurelia-bootstrapper-webpack": "^1.0.0-beta.1.0.1",
     "aurelia-event-aggregator": "^1.0.0-beta.1.2.0",
     "aurelia-fetch-client": "^1.0.0-beta.1.2.3",
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.22",
-    "aurelia-webpack-plugin": "^1.0.0-beta.1.0.2",
+    "aurelia-webpack-plugin": "1.0.0-beta.1.0.4",
     "babel-core": "^6.7.2",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",

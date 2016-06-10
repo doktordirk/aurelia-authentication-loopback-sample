@@ -1,5 +1,5 @@
 // auth config when running on localhost
-let configForDevelopment = {
+export default {
   endpoint: 'auth',   // use 'auth' as endpoint for aurelia-authentication
   configureEndpoints: ['auth', 'api'],  // add Authorization headers to those for authenticated requests
   baseUrl: '',  // server url. already set in main.js to localhost:300/api
@@ -12,6 +12,7 @@ let configForDevelopment = {
   loginRedirect: '#/profile',  // internal aurelia redirect root
   signupRedirect: '#/login', // internal aurelia redirect root
   logoutRedirect: '#/login',
+  expiredRedirect: 1,
   loginRoute: '/login',
   authToken: '',  // 'prefix' for header token. ''=empty for loopback
   useRefreshToken: true,
@@ -35,23 +36,3 @@ let configForDevelopment = {
     }
   }
 };
-
-// auth config when running on host (eg openshift)
-let configForProduction = {
-  providers: {
-    facebook: {
-      clientId: 'App ID'
-    }
-
-  }
-};
-
-// select config based on url
-let config;
-if (window.location.hostname === 'localhost') {
-  config = configForDevelopment;
-} else {
-  config = configForProduction;
-}
-
-export default config;

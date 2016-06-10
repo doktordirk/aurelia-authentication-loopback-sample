@@ -1,4 +1,4 @@
-import {inject} from 'aurelia-framework';
+import {inject, computedFrom} from 'aurelia-framework';
 import {AuthService} from 'aurelia-authentication';
 import {customElement, bindable} from 'aurelia-framework';
 import {Router} from 'aurelia-router'
@@ -14,7 +14,8 @@ export class NavBar {
     this.auth = auth;
   }
 
+  @computedFrom('auth.authenticated')
   get isAuthenticated() {
-    return this.auth.isAuthenticated();
+    return this.auth.authenticated;
   }
 }
