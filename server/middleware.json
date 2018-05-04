@@ -26,7 +26,7 @@
   "refresh": {
     "./middleware/refresh-token": {
       "params": {
-        "access_token_ttl": "1d",
+        "access_token_ttl": "10s",
         "client_secret": "**do_this_in_xyz_local_json**",
         "refresh_token_ttl": "30d",
         "authentication_response_body": {"some": "data"}
